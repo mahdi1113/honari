@@ -4,8 +4,47 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9c491b8531eec05ba41a11d9276a5749",
+    "content-hash": "7ed32e13e30590d9fcbb4f65b09f87f6",
     "packages": [
+        {
+            "name": "abolfazl-talebi/laravel6-persian-lang",
+            "version": "v6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Abolfazl-Talebi/laravel6-persian-lang.git",
+                "reference": "e322ef4ecc520074f19d06b7919e895eb162fe4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Abolfazl-Talebi/laravel6-persian-lang/zipball/e322ef4ecc520074f19d06b7919e895eb162fe4f",
+                "reference": "e322ef4ecc520074f19d06b7919e895eb162fe4f",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abolfazl Talebi",
+                    "email": "abimanager@gmail.com"
+                }
+            ],
+            "description": "Persian Languages for Laravel 6",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm",
+                "persian"
+            ],
+            "support": {
+                "issues": "https://github.com/Abolfazl-Talebi/laravel6-persian-lang/issues",
+                "source": "https://github.com/Abolfazl-Talebi/laravel6-persian-lang/tree/v6.0"
+            },
+            "time": "2019-10-20T06:39:39+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.12.1",
