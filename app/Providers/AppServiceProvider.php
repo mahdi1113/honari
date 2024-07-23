@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\TeacherCourse;
 use App\Repositories\BlogRepositoryInterface;
 use App\Repositories\Eloquent\BlogRepository;
+use App\Repositories\Eloquent\TeacherCourseRepository;
+use App\Repositories\TeacherCourseRepositoryInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -19,6 +22,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             BlogRepositoryInterface::class,
             BlogRepository::class
+        );
+
+        $this->app->bind(
+            TeacherCourseRepositoryInterface::class,
+            TeacherCourseRepository::class
         );
 
         Route::macro('handler', function ($prefix) {

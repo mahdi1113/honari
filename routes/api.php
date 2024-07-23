@@ -26,4 +26,8 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
         Route::handler('blogs');
     });
 
+    Route::namespace('TeacherCourse')->group(function () {
+        Route::handler('teacherCourses');
+    });
+
 });

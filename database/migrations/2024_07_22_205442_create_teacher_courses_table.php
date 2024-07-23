@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('teacher_courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('cv');
+            $table->string('evidence');
+            $table->unsignedInteger('user_id');
             $table->softDeletes();
             $table->timestamps();
         });
