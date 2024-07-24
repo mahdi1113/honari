@@ -10,7 +10,7 @@ class TeacherCourseRepository
 {
     public function index()
     {
-        return TeacherCourse::with( "user" )->paginate();
+        return TeacherCourse::with( ["user" , "courses"] )->paginate();
     }
     public function store($data)
     {
@@ -29,7 +29,7 @@ class TeacherCourseRepository
 
     public function destroy( $TeacherCourse )
     {
-        $blog = TeacherCourse::findOrFail( $TeacherCourse );
-        return $blog->delete();
+        $TeacherCourse = TeacherCourse::findOrFail( $TeacherCourse );
+        return $TeacherCourse->delete();
     }
 }

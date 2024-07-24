@@ -21,6 +21,7 @@ class TeacherCourseResource extends JsonResource
             'evidence' => $this->evidence ,
             'user_id' => $this->user_id ,
             'user' => UserResource::make( $this->whenLoaded( 'user' ) ) ,
+            'courses' => CourseResource::collection($this->whenLoaded('courses')),
         ];
     }
 }

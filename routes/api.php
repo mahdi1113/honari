@@ -16,7 +16,13 @@ Route::namespace('Blog')->group(function () {
 
     Route::get('get-blogs', 'IndexBlog@index');
     Route::get('get-blog/{blog}', 'ShowBLog@show');
-    Route::get('get-similar-blogs/{blog}', 'IndexBlog@similar');
+
+});
+
+Route::namespace('Course')->group(function () {
+
+    Route::get('get-courses', 'IndexCourse@index');
+    Route::get('get-course/{course}', 'ShowCourse@show');
 
 });
 
@@ -28,6 +34,10 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
 
     Route::namespace('TeacherCourse')->group(function () {
         Route::handler('teacherCourses');
+    });
+
+    Route::namespace('Course')->group(function () {
+        Route::handler('courses');
     });
 
 });

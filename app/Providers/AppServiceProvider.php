@@ -3,8 +3,11 @@
 namespace App\Providers;
 
 use App\Models\TeacherCourse;
+use App\Observers\TeacherCourse\TeacherCourseObserver;
 use App\Repositories\BlogRepositoryInterface;
+use App\Repositories\CourseRepositoryInterface;
 use App\Repositories\Eloquent\BlogRepository;
+use App\Repositories\Eloquent\CourseRepository;
 use App\Repositories\Eloquent\TeacherCourseRepository;
 use App\Repositories\TeacherCourseRepositoryInterface;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +32,11 @@ class AppServiceProvider extends ServiceProvider
             TeacherCourseRepository::class
         );
 
+        $this->app->bind(
+            CourseRepositoryInterface::class,
+            CourseRepository::class
+        );
+
         Route::macro('handler', function ($prefix) {
             $singular = Str::singular($prefix);
             $parameterName = Str::camel($singular);
@@ -47,6 +55,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        TeacherCourse::observe(TeacherCourseObserver::class);
     }
 }
