@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class IndexUser extends Controller
 {
-    //
+    public function __invoke()
+    {
+
+    }
 }

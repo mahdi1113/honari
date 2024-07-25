@@ -52,4 +52,8 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
         Route::handler('purchases');
     });
 
+    Route::namespace('User')->group(function () {
+        Route::handler('users');
+    });
+
 });
