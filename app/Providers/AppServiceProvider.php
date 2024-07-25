@@ -8,7 +8,9 @@ use App\Repositories\BlogRepositoryInterface;
 use App\Repositories\CourseRepositoryInterface;
 use App\Repositories\Eloquent\BlogRepository;
 use App\Repositories\Eloquent\CourseRepository;
+use App\Repositories\Eloquent\PurchaseRespository;
 use App\Repositories\Eloquent\TeacherCourseRepository;
+use App\Repositories\PurchaseRespositoryInterface;
 use App\Repositories\TeacherCourseRepositoryInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
@@ -35,6 +37,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             CourseRepositoryInterface::class,
             CourseRepository::class
+        );
+
+        $this->app->bind(
+            PurchaseRespositoryInterface::class,
+            PurchaseRespository::class
         );
 
         Route::macro('handler', function ($prefix) {

@@ -19,7 +19,7 @@ class CourseRepository
     public function show( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "teachers" , "teachers.user");
+        $course->load( "teachers" , "teachers.user", "purchases", "purchases.user");
         return $course;
     }
 

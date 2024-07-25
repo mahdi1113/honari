@@ -19,6 +19,14 @@ Route::namespace('Blog')->group(function () {
 
 });
 
+Route::namespace('Purchase')->group(function () {
+
+    Route::get('get-purchases', 'Indexpurchase@index');
+    Route::get('get-purchase/{purchase}', 'Showpurchase@show');
+    Route::post('store-purchase', 'Storepurchase@storeOnline')->middleware('auth:sanctum');
+
+});
+
 Route::namespace('Course')->group(function () {
 
     Route::get('get-courses', 'IndexCourse@index');
@@ -38,6 +46,10 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
 
     Route::namespace('Course')->group(function () {
         Route::handler('courses');
+    });
+
+    Route::namespace('Purchase')->group(function () {
+        Route::handler('purchases');
     });
 
 });

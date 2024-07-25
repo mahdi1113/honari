@@ -17,10 +17,10 @@ class Course extends Model
         return $this->hasMany(Comment::class);
     }
 
-    public function users()
-    {
-        return $this->belongsToMany(User::class)->withTimestamps();
-    }
+//    public function users()
+//    {
+//        return $this->belongsToMany(User::class)->withTimestamps();
+//    }
 
     public function tickets()
     {
@@ -30,5 +30,10 @@ class Course extends Model
     public function teachers()
     {
         return $this->belongsToMany(TeacherCourse::class, 'course_teachers','course_id','teacher_id');
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
     }
 }
