@@ -50,13 +50,24 @@ class User extends Authenticatable
         return $this->hasMany(Comment::class);
     }
 
-    public function courses()
-    {
-        return $this->belongsToMany(Course::class)->withTimestamps();
-    }
+//    public function courses()
+//    {
+//        return $this->belongsToMany(Course::class)->withTimestamps();
+//    }
 
     public function tickets()
     {
         return $this->hasMany(Ticket::class);
     }
+
+    public function teacherCourse()
+    {
+        return $this->hasOne(TeacherCourse::class);
+    }
+
+    public function purchases()
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
 }

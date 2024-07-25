@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('price');
             $table->string('duration_course');
             $table->string('method_holding');
-            $table->unsignedInteger('course_teacher_id');
             $table->softDeletes();
             $table->timestamps();
         });

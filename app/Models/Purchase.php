@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class TeacherCourse extends Model
+class Purchase extends Model
 {
-    protected $fillable = ['name', 'cv', 'evidence', 'user_id'];
+    protected $fillable = [ 'course_id', 'user_id', 'ticket_count' ];
 
     use HasFactory, SoftDeletes;
 
@@ -17,8 +17,9 @@ class TeacherCourse extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function courses()
+    public function course()
     {
-        return $this->belongsToMany(Course::class, 'course_teachers','teacher_id','course_id');
+        return $this->belongsTo(Course::class);
     }
+
 }

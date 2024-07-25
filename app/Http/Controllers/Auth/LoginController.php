@@ -22,7 +22,7 @@ class LoginController extends Controller
         // Retrieve the token instance
         $personalAccessToken = $token->accessToken;
         // Set the expiration time (e.g., 2 hours from now)
-        $personalAccessToken->expires_at = Carbon::now()->addHours(1);
+        $personalAccessToken->expires_at = Carbon::now()->addHours(5);
         // Save the token to update the expires_at field
         $personalAccessToken->save();
         return Responser::success('' , '', ['token' => $token->plainTextToken, 'user' => $user]);
