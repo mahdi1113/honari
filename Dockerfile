@@ -1,0 +1,49 @@
+# استفاده از تصویر پایه PHP با Apache
+FROM php:8.2-apache
+
+# نصب افزونه‌های سیستم و PHP مورد نیاز
+RUN apt-get update && \
+    apt-get install -y \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libzip-dev \
+    libonig-dev \
+    libxml2-dev \
+    unzip \
+    git && \
+    docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install gd zip pdo pdo_mysql
+
+# تنظیم مسیر کاری
+WORKDIR /var/www/html
+
+# کپی کردن فایل‌های پروژه به داخل کانتینر
+COPY . .
+
+# نصب Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# نصب وابستگی‌های پروژه با Composer
+RUN composer install --no-dev --optimize-autoloader
+
+# تنظیمات پایگاه داده و کش
+RUN php artisan key:generate && \
+    php artisan config:cache && \
+    php artisan route:cache && \
+    php artisan view:cache
+
+# کپی کردن پیکربندی Apache به داخل کانتینر
+COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
+
+# فعال کردن ماژول‌های Apache
+RUN a2enmod rewrite
+
+# تغییر مالکیت دایرکتوری‌های مورد نیاز به www-data
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+
+# باز کردن پورت 80 برای Apache
+EXPOSE 80
+
+# تنظیم دستورات اجرایی
+CMD ["apache2-foreground"]
