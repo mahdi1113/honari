@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class ShowUser extends Controller
 {
-    //
+    public function __invoke()
+    {
+
+    }
 }

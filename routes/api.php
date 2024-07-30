@@ -34,6 +34,12 @@ Route::namespace('Course')->group(function () {
 
 });
 
+Route::namespace('Users')->group(function () {
+
+    Route::get('get-users', 'IndexUser@index');
+
+});
+
 Route::middleware(['auth:sanctum','admin'])->group(function () {
 
     Route::namespace('Blog')->group(function () {
@@ -50,6 +56,10 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
 
     Route::namespace('Purchase')->group(function () {
         Route::handler('purchases');
+    });
+
+    Route::namespace('User')->group(function () {
+        Route::handler('users');
     });
 
 });
