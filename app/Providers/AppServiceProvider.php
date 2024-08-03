@@ -8,10 +8,16 @@ use App\Repositories\BlogRepositoryInterface;
 use App\Repositories\CourseRepositoryInterface;
 use App\Repositories\Eloquent\BlogRepository;
 use App\Repositories\Eloquent\CourseRepository;
+use App\Repositories\Eloquent\FrequentlyQuestionsRepository;
 use App\Repositories\Eloquent\PurchaseRespository;
+use App\Repositories\Eloquent\ResponseRepository;
 use App\Repositories\Eloquent\TeacherCourseRepository;
+use App\Repositories\Eloquent\TicketRepository;
+use App\Repositories\FrequentlyQuestionsRepositoryInterface;
 use App\Repositories\PurchaseRespositoryInterface;
+use App\Repositories\ResponseRepositoryInterface;
 use App\Repositories\TeacherCourseRepositoryInterface;
+use App\Repositories\TicketRepositoryInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -42,6 +48,21 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             PurchaseRespositoryInterface::class,
             PurchaseRespository::class
+        );
+
+        $this->app->bind(
+            TicketRepositoryInterface::class,
+            TicketRepository::class
+        );
+
+        $this->app->bind(
+            ResponseRepositoryInterface::class,
+            ResponseRepository::class
+        );
+
+        $this->app->bind(
+            FrequentlyQuestionsRepositoryInterface::class,
+            FrequentlyQuestionsRepository::class
         );
 
         Route::macro('handler', function ($prefix) {

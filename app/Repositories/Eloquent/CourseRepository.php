@@ -3,30 +3,35 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Course;
+use App\Models\Purchase;
+use Illuminate\Support\Facades\Auth;
 
 class CourseRepository
 {
     public function index()
     {
-        return Course::with( "teachers" , "teachers.user" )->paginate();
+        return Course::with( "teachers" , "teachers.user", "frequentlyQuestions" )->paginate();
     }
 
     public function indexOnline()
     {
-        return Course::with( "teachers" )->paginate();
+        $courseIds = Purchase::where('user_id', Auth::id())->pluck('course_id');
+        $courses = Course::whereIn('id', $courseIds)->with('teachers', "frequentlyQuestions" )->paginate();
+
+        return $courses;
     }
 
     public function show( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "teachers" , "teachers.user", "purchases", "purchases.user");
+        $course->load( "teachers" , "teachers.user", "purchases", "purchases.user", "frequentlyQuestions" );
         return $course;
     }
 
     public function showOnline( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "teachers" );
+        $course->load( "teachers", "frequentlyQuestions" );
         return $course;
     }
     public function store(array $data)

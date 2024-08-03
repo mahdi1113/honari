@@ -15,17 +15,17 @@ RUN apt-get update && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
     docker-php-ext-install gd zip pdo pdo_mysql
 
+# نصب Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # تنظیم مسیر کاری
 WORKDIR /var/www/html
 
 # کپی کردن فایل‌های پروژه به داخل کانتینر
 COPY . .
 
-# نصب Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 # نصب وابستگی‌های پروژه با Composer
-RUN composer install --no-dev --optimize-autoloader
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 
 # تنظیمات پایگاه داده و کش
 RUN php artisan key:generate && \

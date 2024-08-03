@@ -23,6 +23,7 @@ class CourseResource extends JsonResource
             'method_holding' => $this->method_holding,
             'teachers' => TeacherCourseResource::collection($this->whenLoaded('teachers')),
             'purchases' => PurchaseResource::collection($this->whenLoaded('purchases')),
+            'frequentlyQuestions' => FrequentlyQuestionsResource::make($this->whenLoaded('frequentlyQuestions')),
         ];
     }
 }
