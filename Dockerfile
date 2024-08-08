@@ -23,6 +23,9 @@ RUN wget -O /tmp/composer-setup.php https://getcomposer.org/installer && \
     php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
     rm /tmp/composer-setup.php
 
+# نصب Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 # تنظیم مسیر کاری
 WORKDIR /var/www/html
 

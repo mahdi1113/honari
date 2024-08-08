@@ -17,6 +17,11 @@ class Course extends Model
         return $this->hasMany(Comment::class);
     }
 
+    public function frequentlyQuestions()
+    {
+        return $this->hasOne(FrequentlyQuestions::class);
+    }
+
 //    public function users()
 //    {
 //        return $this->belongsToMany(User::class)->withTimestamps();
