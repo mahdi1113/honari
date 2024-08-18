@@ -48,7 +48,7 @@ COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 
 # تغییر مالکیت دایرکتوری‌های مورد نیاز به www-data
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html/upload /var/www/html/bootstrap/cache
 
 # باز کردن پورت 80 برای Apache
 EXPOSE 80

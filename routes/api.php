@@ -92,4 +92,8 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
         Route::handler('frequentlyQuestions');
     });
 
+    Route::namespace('Media')->group(function () {
+        Route::post('store_media', 'StoreMedia');
+    });
+
 });
