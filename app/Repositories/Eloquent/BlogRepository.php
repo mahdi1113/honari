@@ -3,9 +3,11 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Blog;
+use App\Repositories\BlogRepositoryInterface;
+use App\Service\MediaHelper;
 use Illuminate\Support\Facades\Auth;
 
-class BlogRepository
+class BlogRepository implements BlogRepositoryInterface
 {
     public function index()
     {
@@ -34,6 +36,8 @@ class BlogRepository
     {
         $data['user_id'] = Auth::user()->id;
         $blog = Blog::query()->create( $data );
+
+        MediaHelper::moveMediaTo( $blog );
 
         $blog->load("creator");
         return $blog;

@@ -10,6 +10,8 @@ class FrequentlyQuestions extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['title', 'description', 'course_id'];
+
     public function course()
     {
         return $this->belongsTo(Course::class);

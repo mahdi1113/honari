@@ -12,7 +12,6 @@ interface BlogRepositoryInterface
 
     public function show( int $blogId );
 
-    public function similarBlogs( int $blogId );
 
     public function showOnline( int $blogId );
 

@@ -19,6 +19,8 @@ services:
             - "8080:80"
         depends_on:
             - db
+        volumes:
+            - .:/var/www/html  # اتصال دایرکتوری محلی به دایرکتوری داخل کانتینر
 
     phpmyadmin:
         image: phpmyadmin/phpmyadmin

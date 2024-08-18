@@ -2,7 +2,8 @@
 FROM php:8.2-apache
 
 # نصب افزونه‌های سیستم و PHP مورد نیاز
-RUN apt-get update && \
+RUN echo 'Acquire::Check-Valid-Until "false";' > /etc/apt/apt.conf.d/99no-check-valid-until && \
+    apt-get update -o Acquire::Check-Valid-Until=false && \
     apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -11,9 +12,19 @@ RUN apt-get update && \
     libonig-dev \
     libxml2-dev \
     unzip \
-    git && \
+    git \
+    wget \
+    libexif-dev && \
     docker-php-ext-configure gd --with-freetype --with-jpeg && \
-    docker-php-ext-install gd zip pdo pdo_mysql
+    docker-php-ext-install gd zip pdo pdo_mysql exif
+
+# نصب Composer
+RUN wget -O /tmp/composer-setup.php https://getcomposer.org/installer && \
+    php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm /tmp/composer-setup.php
+
+# نصب Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # تنظیم مسیر کاری
 WORKDIR /var/www/html
@@ -21,11 +32,8 @@ WORKDIR /var/www/html
 # کپی کردن فایل‌های پروژه به داخل کانتینر
 COPY . .
 
-# نصب Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
 # نصب وابستگی‌های پروژه با Composer
-RUN composer install --no-dev --optimize-autoloader
+RUN COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 
 # تنظیمات پایگاه داده و کش
 RUN php artisan key:generate && \
@@ -40,7 +48,7 @@ COPY ./apache-config.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 
 # تغییر مالکیت دایرکتوری‌های مورد نیاز به www-data
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html/upload /var/www/html/bootstrap/cache
 
 # باز کردن پورت 80 برای Apache
 EXPOSE 80
