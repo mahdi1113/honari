@@ -4,9 +4,10 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Response;
 use App\Models\Ticket;
+use App\Repositories\ResponseRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
-class ResponseRepository
+class ResponseRepository implements ResponseRepositoryInterface
 {
     public function store($data)
     {
@@ -30,7 +31,7 @@ class ResponseRepository
 
     public function update( $data , $responseId )
     {
-        $response = Response::findOrFail( $responseId );
+        $response = Response::query()->findOrFail( $responseId );
         $response->update( $data );
 
         $response->load( "ticket" );

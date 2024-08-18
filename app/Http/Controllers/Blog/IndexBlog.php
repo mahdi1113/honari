@@ -19,14 +19,14 @@ class IndexBlog extends Controller
     public function __invoke(): AnonymousResourceCollection
     {
         return BlogResource::collection(
-            app( BlogRepositoryInterface::class )->index()
+            $this->blogService->getBlogs()
         );
     }
 
     public function index(): AnonymousResourceCollection
     {
         return BlogResource::collection(
-            app( BlogRepositoryInterface::class )->indexOnline()
+            $this->blogService->getBlogsOnline()
         );
     }
 

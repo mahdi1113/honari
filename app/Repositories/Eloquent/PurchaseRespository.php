@@ -4,9 +4,10 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Course;
 use App\Models\Purchase;
+use App\Repositories\PurchaseRespositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
-class PurchaseRespository
+class PurchaseRespository implements PurchaseRespositoryInterface
 {
     public function index()
     {
