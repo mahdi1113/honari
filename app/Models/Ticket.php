@@ -10,6 +10,8 @@ class Ticket extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = ['title','description','user_id','course_id','status'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -19,4 +21,10 @@ class Ticket extends Model
     {
         return $this->belongsTo(Course::class);
     }
+
+    public function response()
+    {
+        return $this->hasOne(Response::class);
+    }
+
 }

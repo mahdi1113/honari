@@ -15,6 +15,7 @@ class BlogResource extends JsonResource
             'description' => $this->description ,
             'creator_id' => $this->user_id ,
             'creator' => UserResource::make( $this->whenLoaded( 'creator' ) ) ,
+            'files' => $this->getFirstMediaUrl('files'),
         ];
     }
 }

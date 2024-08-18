@@ -27,18 +27,36 @@ Route::namespace('Purchase')->group(function () {
 
 });
 
-Route::namespace('Course')->group(function () {
+
+
+Route::namespace('Course')->middleware('auth:sanctum')->group(function () {
 
     Route::get('get-courses', 'IndexCourse@index');
     Route::get('get-course/{course}', 'ShowCourse@show');
 
 });
 
-Route::namespace('Users')->group(function () {
+Route::namespace('Ticket')->middleware('auth:sanctum')->group(function () {
 
-    Route::get('get-users', 'IndexUser@index');
+    Route::get('get-tickets', 'IndexTicket@indexOnline');
+    Route::get('get-ticket/{ticket}', 'ShowTicket@showOnline');
+    Route::post('store-ticket', 'StoreTicket@storeOnline');
+    Route::put('update-ticket/{ticket}', 'UpdateTicket@updateOnline');
 
 });
+
+Route::namespace('Response')->middleware('auth:sanctum')->group(function () {
+
+    Route::get('get-responses', 'IndexResponse@indexOnline');
+    Route::get('get-response/{response}', 'ShowResponse@showOnline');
+
+});
+
+//Route::namespace('Users')->group(function () {
+//
+//    Route::get('get-users', 'IndexUser@index');
+//
+//});
 
 Route::middleware(['auth:sanctum','admin'])->group(function () {
 
@@ -58,8 +76,24 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
         Route::handler('purchases');
     });
 
-    Route::namespace('User')->group(function () {
-        Route::handler('users');
+//    Route::namespace('User')->group(function () {
+//        Route::handler('users');
+//    });
+
+    Route::namespace('Ticket')->group(function () {
+        Route::handler('tickets');
+    });
+
+    Route::namespace('Response')->group(function () {
+        Route::handler('response');
+    });
+
+    Route::namespace('FrequentlyQuestions')->group(function () {
+        Route::handler('frequentlyQuestions');
+    });
+
+    Route::namespace('Media')->group(function () {
+        Route::post('store_media', 'StoreMedia');
     });
 
 });
