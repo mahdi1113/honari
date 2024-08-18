@@ -3,9 +3,10 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Ticket;
+use App\Repositories\TicketRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
-class TicketRepository
+class TicketRepository implements TicketRepositoryInterface
 {
     public function index()
     {

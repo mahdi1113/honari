@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class StoreBlog extends Controller
 {
-    protected $blogService;
+    protected BlogService $blogService;
     public function __construct(BlogService $blogService)
     {
         $this->blogService = $blogService;

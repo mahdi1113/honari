@@ -8,9 +8,6 @@ interface TeacherCourseRepositoryInterface
 
     public function index();
 
-    public function indexOnline();
-
-    public function similarBlogs( int $TeacherCourse );
 
     public function store( array $data );
 

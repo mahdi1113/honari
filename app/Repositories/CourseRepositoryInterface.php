@@ -12,8 +12,6 @@ interface CourseRepositoryInterface
 
     public function show( int $courseId );
 
-    public function similarBlogs( int $courseId );
-
     public function showOnline( int $courseId );
 
     public function store( array $data );

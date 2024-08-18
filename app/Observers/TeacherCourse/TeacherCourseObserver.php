@@ -7,7 +7,7 @@ use App\Models\TeacherCourse;
 class TeacherCourseObserver
 {
     /**
-     * Handle the TeacherCourse "created" event.
+     * Handle the TeacherCourseService "created" event.
      */
     public function created(TeacherCourse $teacherCourse): void
     {
@@ -15,7 +15,7 @@ class TeacherCourseObserver
     }
 
     /**
-     * Handle the TeacherCourse "updated" event.
+     * Handle the TeacherCourseService "updated" event.
      */
     public function updated(TeacherCourse $teacherCourse): void
     {
@@ -23,7 +23,7 @@ class TeacherCourseObserver
     }
 
     /**
-     * Handle the TeacherCourse "deleted" event.
+     * Handle the TeacherCourseService "deleted" event.
      */
     public function deleted(TeacherCourse $teacherCourse): void
     {
@@ -31,7 +31,7 @@ class TeacherCourseObserver
     }
 
     /**
-     * Handle the TeacherCourse "restored" event.
+     * Handle the TeacherCourseService "restored" event.
      */
     public function restored(TeacherCourse $teacherCourse): void
     {
@@ -39,7 +39,7 @@ class TeacherCourseObserver
     }
 
     /**
-     * Handle the TeacherCourse "force deleted" event.
+     * Handle the TeacherCourseService "force deleted" event.
      */
     public function forceDeleted(TeacherCourse $teacherCourse): void
     {
