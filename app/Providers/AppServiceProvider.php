@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Course;
 use App\Models\TeacherCourse;
+use App\Observers\Course\CourseObserver;
 use App\Observers\TeacherCourse\TeacherCourseObserver;
 use App\Repositories\BlogRepositoryInterface;
 use App\Repositories\CourseRepositoryInterface;

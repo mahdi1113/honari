@@ -22,4 +22,11 @@ class IndexPurchase extends Controller
             $this->purchaseService->getPurchases()
         );
     }
+
+    public function indexOnline(): AnonymousResourceCollection
+    {
+        return PurchaseResource::collection(
+            $this->purchaseService->getPurchasesOnline()
+        );
+    }
 }

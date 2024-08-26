@@ -11,7 +11,7 @@ class HasTicket implements Rule
     public function passes($attribute, $value)
     {
         $userId = Auth::id();
-        if($value->user_id == $userId)
+        if($value->user_id === $userId)
         {
             return true;
         }else{

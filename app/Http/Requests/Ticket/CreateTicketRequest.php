@@ -25,7 +25,7 @@ class CreateTicketRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'course_id' => ['required', 'exists:courses,id', new HasCourse('App\Models\Course')],
+            'course_id' => ['required', 'exists:courses,id'],
         ];
     }
 }

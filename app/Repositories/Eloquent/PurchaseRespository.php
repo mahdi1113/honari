@@ -13,6 +13,13 @@ class PurchaseRespository implements PurchaseRespositoryInterface
     {
         return Purchase::with( ["user", "course"] )->paginate();
     }
+
+    public function indexOnline()
+    {
+        $user = Auth::user()->id;
+
+        return Purchase::where("user_id", $user)->get();
+    }
     public function store(array $data)
     {
         $data['user_id'] = Auth::user()->id;
