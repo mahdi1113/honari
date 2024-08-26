@@ -16,6 +16,11 @@ class PurchaseService
         return $this->purchaseRespositoryInterface->index();
     }
 
+    public function getPurchasesOnline()
+    {
+        return $this->purchaseRespositoryInterface->indexOnline();
+    }
+
     public function createPurchase()
     {
         return $this->purchaseRespositoryInterface->store($this->data());
