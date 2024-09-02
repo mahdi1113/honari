@@ -1,0 +1,233 @@
+@font-face {
+    font-family: vazir;
+    font-style: normal;
+    font-weight: 100;
+    src: url("../fonts/Vazir-Black-FD.eot");
+    src: url("../fonts/Vazir-Black-FD.woff") format("woff"),
+      url("../fonts/Vazir-Black-FD.ttf") format("ttf"),
+      url("../fonts/Vazir-Black-FD.woff2") format("woff2");
+  }
+
+td, th
+ {
+    text-align: center;
+ }
+
+ body {
+    font-family: vazir;
+ }
+ body {
+    overflow-x: hidden;
+}
+
+ .icon-hover-danger:hover{
+    --ci-primary-color: white;
+    background-color: red;
+    border-radius: 20px
+ }
+
+ ::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the scrollbar track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+    border-radius: 20px; /* Border radius to create a tablet shape */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+
+
+.table-responsive {
+    max-height: 400px; /* Set your desired max height */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    position: relative; /* Ensure positioning context for sticky headers */
+  }
+
+  .table-responsive table {
+    width: 100%; /* Ensure the table takes the full width */
+    border-collapse: collapse; /* Optional: For a better look */
+  }
+
+  .table-responsive thead {
+    position: sticky; /* Make the headers sticky */
+    top: -1px; /* Stick to the top */
+    background-color: white; /* Ensure the header has a background */
+    z-index: 1; /* Ensure the headers are above the table body */
+    border: 41px solid black;
+  }
+  /* Optional: Add some styling to make the table look better */
+  .table-responsive thead, .table-responsive td {
+    padding: 8px; /* Adjust padding as needed */
+    border: 1px solid #ddd; /* Add a border */
+    text-align: center; /* Align text */
+  }
+  /* li::marker {
+    content: none;
+    font-variant-numeric: normal;
+    text-transform: inherit;
+    text-indent: inherit;
+    text-align: inherit;
+    text-align-last: inherit;
+} */
+
+.big-dash-divider {
+    width: 100%;           /* Full width of the container */
+    height: 2px;           /* Thickness of the divider */
+    background-color: black; /* Color of the dash */
+    margin: 20px 0;        /* Space above and below the divider */
+    border-radius: 2px;    /* Optional: makes the edges slightly rounded */
+    text-align: center;
+    position: relative;
+}
+
+.big-dash-divider::before {
+    content: 'ALI RAHIMI';
+    font-size: 24px;       /* Size of the dash */
+    position: absolute;
+    top: -14px;            /* Adjust the position to align the dash vertically */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #F3F4F7; /* To cover the line behind the dash */
+    padding: 0 10px;        /* Add padding around the dash to cover the line */
+}
+
+.footer p
+{
+    font-size: 1vw;
+}
+.footer h5
+{
+    font-size: 1.5vw;
+}
+.footer img
+{
+    width: 10vw;
+}
+
+.home-img-main img{
+    width: 40vw;
+}
+
+.package-image-container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+.package-image {
+    display: block;
+    width: 25rem;
+    transition: transform 0.3s ease;
+}
+
+.PackageImageText {
+    position: absolute;
+    bottom: 8px;
+    z-index: 1;
+}
+
+.package-image-container:hover {
+    transform: scale(1.1); /* Enlarge the image on hover */
+}
+
+.image-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Translucent black background */
+    color: #F3F4F7;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.home-logos {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.home-logos-slide {
+    display: flex;
+    animation: scroll 10s linear infinite;
+    width: calc(200%); /* Ensure the width is double the container */
+}
+
+.home-logos-slide img {
+    width: calc(100% / 4); /* Adjust the width based on the number of images */
+    flex-shrink: 0;
+}
+
+/* @keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+} */
+
+
+.login-btn{
+    width: 20vw;
+}
+
+.product-box{
+    height: 75vh;
+}
+.product-img{
+    height: 75vh;
+    width: 30vw;
+}
+
+.product-page p{
+    font-size: 1.2vw;
+}
+.product-page h1{
+    font-size: 3vw;
+}
+.product-page h3{
+    font-size: 1.5vw;
+}
+.product-page li{
+    font-size: 1vw;
+}
+.product-page button{
+    font-size: 2vw;
+}
+.product-text p, li{
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+
+.header-with-line {
+    display: flex;
+    align-items: center;
+  }
+
+.header-with-line h3 {
+position: relative;
+flex: 1;
+margin: 0; /* Removes the default margin */
+display: flex;
+align-items: center;
+}
+
+.header-with-line h3::after {
+content: '';
+flex: 1;
+margin-left: 10px; /* Adjust spacing between text and line */
+margin-right: 4px; /* Adjust spacing between text and line */
+border-bottom: 4px solid #555; /* Line style */
+}
