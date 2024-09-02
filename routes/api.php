@@ -26,10 +26,15 @@ Route::namespace('Purchase')->middleware('auth:sanctum')->group(function () {
 
 });
 
-Route::namespace('Course')->middleware('auth:sanctum')->group(function () {
+Route::namespace('Course')->group(function () {
 
-    Route::get('get-courses', 'IndexCourse@index');
-    Route::get('get-course/{course}', 'ShowCourse@show');
+    Route::get('get-courses', 'Indexcourse@indexOnline');
+    Route::get('get-course/{course}', 'ShowCourse@showOnline');
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::get('get-courses-user', 'IndexCourse@index');
+        Route::get('get-course-user/{course}', 'ShowCourse@show');
+    });
 
 });
 
