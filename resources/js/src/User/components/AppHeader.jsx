@@ -33,9 +33,6 @@ const AppHeader = () => {
         >
           <CIcon icon={cilMenu} size="lg" />
         </CHeaderToggler>
-        {toolBars && toolBars?.map((item, index)=>{
-            return item;
-        })}
         <CHeaderNav className="ms-3">
           <AppHeaderDropdown />
         </CHeaderNav>

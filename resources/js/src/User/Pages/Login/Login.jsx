@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink, Navigate } from "react-router-dom";
 import {
     CButton,
@@ -39,7 +39,11 @@ const Register = () => {
     const [errors, setErrors] = useState("");
     const [unauthorized, setUnauthorized] = useState("");
     let navigate = useNavigate();
-
+    useEffect(()=>{
+        if(localStorage.getItem("token")){
+            return navigate("/user/")
+        }
+    },[])
     const handleSubmit = function (e) {
         e.preventDefault();
         // console.log(email),
@@ -52,7 +56,7 @@ const Register = () => {
             .then((res) => {
                 console.log(res);
                 localStorage.setItem("token", res.data.data.token);
-                showAlert('با موفقیت وارد شدید', '#', 'success');
+                showAlert('با موفقیت وارد شدید', '#/user/', 'success');
                 // return navigate("#");
             })
             .catch((error) => {

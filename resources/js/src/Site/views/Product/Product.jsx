@@ -52,6 +52,7 @@ const Product = () =>{
         });
     }
     };
+    
     return (
         <>
             <CContainer className='product-page border border-5 border-secondary rounded-3 mb-5'>

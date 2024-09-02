@@ -40,7 +40,11 @@ const Register = () => {
     const [errors, setErrors] = useState("");
     const [unauthorized, setUnauthorized] = useState("");
     let navigate = useNavigate();
-
+    useEffect(()=>{
+        if(localStorage.getItem("token")){
+            return navigate("/user/")
+        }
+    },[])
     const handleSubmit = function (e) {
         e.preventDefault();
         // console.log(email),
