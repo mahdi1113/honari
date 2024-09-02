@@ -186,7 +186,7 @@ const Product = () =>{
                         </CContainer>
                     </CCol>
                     <CCol  lg={3} className='mx-auto'>
-                <CContainer className='border border-secondary border-5 rounded-3 bg-light mb-5'>
+                <CContainer className='sticky-container border border-secondary border-5 rounded-3 bg-light mb-5'>
                     <h3>دسترسی سریع</h3>
                     <CButton color='dark' className='w-100 text-start mb-4' onClick={() => scrollToSection('intro')}>
                         <li>معرفی دوره</li>

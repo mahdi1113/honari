@@ -30,13 +30,12 @@ const AppHeader = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
   return (
-    <CHeader position="sticky" className="mb-4">
-      <CContainer  fluid>
+    <CHeader  position="sticky" className="mb-4">
+      <CContainer className='flex-nowrap'  fluid>
         <CHeaderNav className="d-none d-lg-flex me-start my-auto">
             <CNavItem className=''>
-                <CNavLink className='h1' to="/" component={NavLink}>
-                <p className='h1'>علی رحیمی</p>
-
+                <CNavLink to="/" component={NavLink}>
+                <p>علی رحیمی</p>
                 </CNavLink>
             </CNavItem>
         </CHeaderNav>
@@ -50,7 +49,7 @@ const AppHeader = () => {
         </CButton>
 
         {/* Conditional rendering for the navigation menu */}
-        <CHeaderNav className={`d-lg-flex ${isMobileMenuOpen ? 'd-block' : 'd-none'} flex-column flex-lg-row me-auto gap-2`}>
+        <CHeaderNav className={`d-lg-flex ${isMobileMenuOpen ? 'd-block' : 'd-none'} flex-column flex-lg-row me-auto gap-1`}>
 
             <CNavItem>
                 <CNavLink href="#" >

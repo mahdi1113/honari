@@ -104,7 +104,7 @@ const Home = () => {
         </div>
         <div className="mb-5">
             <h1 className="text-center mb-5">آثار</h1>
-            <div className="d-flex justify-content-center overflow-hidden">
+            <div className="d-flex justify-content-center overflow-hidden mb-3">
                 <div className="d-flex flex-nowrap home-logos">
                     <div className="home-logos-slide">
                         {works.map((logo, index) => (
@@ -118,7 +118,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="d-flex justify-content-center overflow-hidden">
+            <div className="d-flex justify-content-center overflow-hidden mb-3">
                 <div className="d-flex flex-nowrap home-logos-reverse">
                     <div className="home-logos-slide-reverse">
                         {works.map((logo, index) => (
@@ -132,7 +132,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className="d-flex justify-content-center overflow-hidden">
+            <div className="d-flex justify-content-center overflow-hidden mb-3">
                 <div className="d-flex flex-nowrap home-logos">
                     <div className="home-logos-slide">
                         {works.map((logo, index) => (

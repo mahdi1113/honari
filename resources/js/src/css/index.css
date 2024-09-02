@@ -20,6 +20,12 @@ td, th
     overflow-x: hidden;
 }
 
+.header a {
+    font-size: 1vw;
+}
+.header p {
+    font-size: 2vw;
+}
  .icon-hover-danger:hover{
     --ci-primary-color: white;
     background-color: red;
@@ -263,4 +269,12 @@ flex: 1;
 margin-left: 10px; /* Adjust spacing between text and line */
 margin-right: 4px; /* Adjust spacing between text and line */
 border-bottom: 4px solid #555; /* Line style */
+}
+
+.sticky-container {
+    position: -webkit-sticky; /* For Safari */
+    position: sticky;
+    top: 15vh; /* Adjust this value as needed */
+    /* Optionally add z-index if you want to ensure it's above other content */
+    z-index: 10;
 }
