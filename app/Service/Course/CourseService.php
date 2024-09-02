@@ -21,6 +21,11 @@ class CourseService
         return $this->courseRepositoryInterface->indexOnline();
     }
 
+    public function getCoursesUserOnline()
+    {
+        return $this->courseRepositoryInterface->indexCourseUser();
+    }
+
     public function getCourse(int $id)
     {
         return $this->courseRepositoryInterface->show($id);
@@ -29,6 +34,11 @@ class CourseService
     public function getCourseOnline(int $id)
     {
         return $this->courseRepositoryInterface->showOnline($id);
+    }
+
+    public function getCourseUserOnline(int $id)
+    {
+        return$this->courseRepositoryInterface->showCourseUser($id);
     }
 
     public function createCourse()

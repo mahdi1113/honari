@@ -26,6 +26,13 @@ class ShowCourse extends Controller
     public function show( Course $course ): CourseResource
     {
         return CourseResource::make(
+            $this->courseService->getCourseUserOnline($course->id)
+        );
+    }
+
+    public function showOnline( Course $course )
+    {
+        return CourseResource::make(
             $this->courseService->getCourseOnline($course->id)
         );
     }

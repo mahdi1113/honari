@@ -8,11 +8,15 @@ interface CourseRepositoryInterface
 
     public function index();
 
+    public function indexCourseUser();
+
     public function indexOnline();
 
     public function show( int $courseId );
 
     public function showOnline( int $courseId );
+
+    public function showCourseUser( $courseId );
 
     public function store( array $data );
 

@@ -26,6 +26,13 @@ class IndexCourse extends Controller
     public function index(): AnonymousResourceCollection
     {
         return CourseResource::collection(
+            $this->courseService->getCoursesUserOnline()
+        );
+    }
+
+    public function indexOnline(): AnonymousResourceCollection
+    {
+        return CourseResource::collection(
             $this->courseService->getCoursesOnline()
         );
     }
