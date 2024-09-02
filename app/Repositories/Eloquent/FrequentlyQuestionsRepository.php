@@ -4,8 +4,9 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Course;
 use App\Models\FrequentlyQuestions;
+use App\Repositories\FrequentlyQuestionsRepositoryInterface;
 
-class FrequentlyQuestionsRepository
+class FrequentlyQuestionsRepository implements FrequentlyQuestionsRepositoryInterface
 {
     public function index()
     {

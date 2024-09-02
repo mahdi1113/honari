@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Course;
 use App\Models\TeacherCourse;
+use App\Observers\Course\CourseObserver;
 use App\Observers\TeacherCourse\TeacherCourseObserver;
 use App\Repositories\BlogRepositoryInterface;
 use App\Repositories\CourseRepositoryInterface;
@@ -13,11 +15,13 @@ use App\Repositories\Eloquent\PurchaseRespository;
 use App\Repositories\Eloquent\ResponseRepository;
 use App\Repositories\Eloquent\TeacherCourseRepository;
 use App\Repositories\Eloquent\TicketRepository;
+use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\FrequentlyQuestionsRepositoryInterface;
 use App\Repositories\PurchaseRespositoryInterface;
 use App\Repositories\ResponseRepositoryInterface;
 use App\Repositories\TeacherCourseRepositoryInterface;
 use App\Repositories\TicketRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -63,6 +67,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             FrequentlyQuestionsRepositoryInterface::class,
             FrequentlyQuestionsRepository::class
+        );
+
+        $this->app->bind(
+            UserRepositoryInterface::class,
+            UserRepository::class
         );
 
         Route::macro('handler', function ($prefix) {

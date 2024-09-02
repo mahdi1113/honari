@@ -19,15 +19,12 @@ Route::namespace('Blog')->group(function () {
 
 });
 
-Route::namespace('Purchase')->group(function () {
+Route::namespace('Purchase')->middleware('auth:sanctum')->group(function () {
 
     Route::get('get-purchases', 'Indexpurchase@index');
-    Route::get('get-purchase/{purchase}', 'Showpurchase@show');
     Route::post('store-purchase', 'Storepurchase@storeOnline')->middleware('auth:sanctum');
 
 });
-
-
 
 Route::namespace('Course')->middleware('auth:sanctum')->group(function () {
 
@@ -45,18 +42,13 @@ Route::namespace('Ticket')->middleware('auth:sanctum')->group(function () {
 
 });
 
-Route::namespace('Response')->middleware('auth:sanctum')->group(function () {
 
-    Route::get('get-responses', 'IndexResponse@indexOnline');
-    Route::get('get-response/{response}', 'ShowResponse@showOnline');
+Route::namespace('User')->middleware('auth:sanctum')->group(function () {
+
+    Route::get('get-user', 'ShowUser@showOnline');
+    Route::put('update-user/{user}', 'UpdateUser@updateOnline');
 
 });
-
-//Route::namespace('Users')->group(function () {
-//
-//    Route::get('get-users', 'IndexUser@index');
-//
-//});
 
 Route::middleware(['auth:sanctum','admin'])->group(function () {
 
@@ -76,10 +68,6 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
         Route::handler('purchases');
     });
 
-//    Route::namespace('User')->group(function () {
-//        Route::handler('users');
-//    });
-
     Route::namespace('Ticket')->group(function () {
         Route::handler('tickets');
     });
@@ -90,6 +78,14 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
 
     Route::namespace('FrequentlyQuestions')->group(function () {
         Route::handler('frequentlyQuestions');
+    });
+
+    Route::namespace('Media')->group(function () {
+        Route::post('store_media', 'StoreMedia');
+    });
+
+    Route::namespace('User')->group(function () {
+        Route::handler('users');
     });
 
 });

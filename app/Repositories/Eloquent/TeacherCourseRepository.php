@@ -4,9 +4,10 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Blog;
 use App\Models\TeacherCourse;
+use App\Repositories\TeacherCourseRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
-class TeacherCourseRepository
+class TeacherCourseRepository implements TeacherCourseRepositoryInterface
 {
     public function index()
     {

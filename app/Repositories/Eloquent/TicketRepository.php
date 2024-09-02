@@ -3,9 +3,10 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Ticket;
+use App\Repositories\TicketRepositoryInterface;
 use Illuminate\Support\Facades\Auth;
 
-class TicketRepository
+class TicketRepository implements TicketRepositoryInterface
 {
     public function index()
     {
@@ -15,7 +16,14 @@ class TicketRepository
     public function indexOnline()
     {
         $userId = Auth::user()->id;
-        $tickets = Ticket::where('user_id', $userId)->with('course','response')->paginate();
+        $tickets = Ticket::where('user_id', $userId)
+            ->whereHas('course', function ($query) use ($userId) {
+                $query->whereHas('purchases', function ($query) use ($userId) {
+                    $query->where('user_id', $userId);
+                });
+            })
+            ->with('course', 'response')
+            ->paginate();
         return $tickets;
     }
 
