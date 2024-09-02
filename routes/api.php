@@ -43,11 +43,12 @@ Route::namespace('Ticket')->middleware('auth:sanctum')->group(function () {
 });
 
 
-//Route::namespace('Users')->group(function () {
-//
-//    Route::get('get-users', 'IndexUser@index');
-//
-//});
+Route::namespace('User')->middleware('auth:sanctum')->group(function () {
+
+    Route::get('get-user', 'ShowUser@showOnline');
+    Route::put('update-user/{user}', 'UpdateUser@updateOnline');
+
+});
 
 Route::middleware(['auth:sanctum','admin'])->group(function () {
 
@@ -81,6 +82,10 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
 
     Route::namespace('Media')->group(function () {
         Route::post('store_media', 'StoreMedia');
+    });
+
+    Route::namespace('User')->group(function () {
+        Route::handler('users');
     });
 
 });

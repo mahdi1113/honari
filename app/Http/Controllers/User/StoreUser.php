@@ -3,12 +3,21 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Resources\UserResource;
+use App\Service\User\UserService;
 
 class StoreUser extends Controller
 {
-    public function __invoke()
+    protected UserService $userService;
+    public function __construct(UserService $userService)
     {
-
+        $this->userService = $userService;
+    }
+    public function __invoke( RegisterRequest $registerRequest )
+    {
+        return UserResource::make(
+            $this->userService->createUser()
+        );
     }
 }
