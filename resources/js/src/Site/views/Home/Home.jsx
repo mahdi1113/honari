@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import TopPic from'../../assets/images/react1.jpg';
 import BookPic from'../../assets/images/Book.jpg';
+import openbook from'../../assets/images/openbook.jpg';
+import redbook from'../../assets/images/redbook.jpg';
 import { CButton, CNavLink } from "@coreui/react-pro";
 import CIcon from "@coreui/icons-react";
 import { cisEducation } from "@coreui/icons-pro";
@@ -15,33 +17,33 @@ const works =[angular, react, vue, angular, react, vue,]
 const packages=[
     {
         title: 'دوره خطاطی',
-        image: BookPic,
-        link: '#',
+        image: redbook,
+        link: '#/product/1',
     },
     {
         title: 'دوره خطاطی',
-        image: BookPic,
-        link: '#',
+        image: openbook,
+        link: '#/product/1',
     },
     {
         title: 'دوره خطاطی',
-        image: BookPic,
-        link: '#',
+        image: redbook,
+        link: '#/product/1',
     },
     {
         title: 'دوره خطاطی',
-        image: BookPic,
-        link: '#',
+        image: openbook,
+        link: '#/product/1',
     },
     {
         title: 'دوره خطاطی',
-        image: BookPic,
-        link: '#',
+        image: redbook,
+        link: '#/product/1',
     },
     {
         title: 'دوره خطاطی',
-        image: BookPic,
-        link: '#',
+        image: openbook,
+        link: '#/product/1',
     },
 ]
 
@@ -94,14 +96,59 @@ const Home = () => {
                         <PackageImage
                         ImgSrc={coursePackage.image}
                         Title={coursePackage.title}
+                        link={coursePackage.link}
                         />
                     </div>
                 ))}
             </div>
         </div>
         <div className="mb-5">
-    {/* <h1 className="text-center mb-5">آثار</h1> */}
-    {/*   */}
+            <h1 className="text-center mb-5">آثار</h1>
+            <div className="d-flex justify-content-center overflow-hidden">
+                <div className="d-flex flex-nowrap home-logos">
+                    <div className="home-logos-slide">
+                        {works.map((logo, index) => (
+                            <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
+                        ))}
+                    </div>
+                    <div className="home-logos-slide">
+                        {works.map((logo, index) => (
+                            <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="d-flex justify-content-center overflow-hidden">
+                <div className="d-flex flex-nowrap home-logos-reverse">
+                    <div className="home-logos-slide-reverse">
+                        {works.map((logo, index) => (
+                            <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
+                        ))}
+                    </div>
+                    <div className="home-logos-slide-reverse">
+                        {works.map((logo, index) => (
+                            <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="d-flex justify-content-center overflow-hidden">
+                <div className="d-flex flex-nowrap home-logos">
+                    <div className="home-logos-slide">
+                        {works.map((logo, index) => (
+                            <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
+                        ))}
+                    </div>
+                    <div className="home-logos-slide">
+                        {works.map((logo, index) => (
+                            <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div className="mb-5">
         <div className="d-flex flex-column justify-content-around flex-md-row mb-5">
             <div>
                 <h3>درباره استاد</h3>
@@ -113,13 +160,12 @@ const Home = () => {
                     <li>شرکت در نمایشگاههای گروهی</li>
                     <li>تدریس در دانشگاه</li>
                 </div>
+                </div>
+                <div>
+                    <img src={react} height={'300rem'}/>
+                </div>
             </div>
-            <div>
-                <img src={react} height={'300rem'}/>
-            </div>
-
         </div>
-    </div>
 
     </>
 );

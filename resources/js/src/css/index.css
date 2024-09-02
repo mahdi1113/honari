@@ -154,29 +154,62 @@ td, th
 .home-logos {
     width: 100%;
     overflow: hidden;
-    position: relative;
+    /* position: relative; */
+    white-space: nowrap;
+    padding-left: 200%;
 }
 
 .home-logos-slide {
-    display: flex;
-    animation: scroll 10s linear infinite;
-    width: calc(200%); /* Ensure the width is double the container */
+    /* display: flex; */
+    animation: slide 5s linear infinite;
 }
 
-.home-logos-slide img {
-    width: calc(100% / 4); /* Adjust the width based on the number of images */
-    flex-shrink: 0;
-}
-
-/* @keyframes scroll {
-    0% {
+@keyframes slide {
+    from {
         transform: translateX(0);
     }
-    100% {
+    to{
         transform: translateX(-50%);
     }
-} */
+  }
 
+
+.home-logos-slide img {
+    height: 100px;
+    /* padding: 0 15px; */
+
+    /* Adjust the spacing between images if needed */
+}
+
+
+
+.home-logos-reverse {
+    width: 100%;
+    overflow: hidden;
+    /* position: relative; */
+    white-space: nowrap;
+    padding-left: -200%;
+}
+
+.home-logos-slide-reverse {
+    /* display: flex; */
+    animation: slide-reverse 5s linear infinite;
+}
+
+@keyframes slide-reverse {
+    from {
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(50%);
+    }
+  }
+
+  .home-logos-slide-reverse img {
+    height: 100px;
+    /* padding: 0 15px; */
+    /* Adjust the spacing between images if needed */
+}
 
 .login-btn{
     width: 20vw;

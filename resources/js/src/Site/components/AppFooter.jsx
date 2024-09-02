@@ -19,7 +19,7 @@ const AppFooter = () => {
                     <CNavLink href="#">صفحه نخست</CNavLink>
                 </h5>
                 <h5>
-                    <CNavLink href="#">دوره های آموزشی</CNavLink>
+                    <CNavLink href="#/products">دوره های آموزشی</CNavLink>
                 </h5>
             </div>
             <div className='d-flex flex-column'>

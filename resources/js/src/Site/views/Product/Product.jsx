@@ -6,7 +6,7 @@ import openbook from'../../assets/images/openbook.jpg';
 import { CButton, CCol, CContainer, CRow } from '@coreui/react-pro';
 import { cisEducation } from '@coreui/icons-pro';
 import CIcon from '@coreui/icons-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 const ProductData=
     {
         title: 'دوره خطاطی',
@@ -28,7 +28,24 @@ const ProductData=
         link: '#'
     }
 
-
+const faq = [
+    {
+        title:'چگونه سوالات متداول را بنویسیم',
+        description: 'کلید سوالات متداول معنادار در قالب سوالات آن دقیقاً همانطور که کاربران از آنها می پرسند نهفته است. بنابراین ، در اینجا 3 هک نوشتن سوال عملی برای جلوگیری از سرقت اثربخشی سوالات متداول در سوالات ضعیف آورده شده است.'
+    },
+    {
+        title:'سوالات متداول چیست؟',
+        description: 'پرتکرارترین سوالات مربوط به هر صفحه گلچین می‌شود و در قالب سوالات متداول یا همان frequently asked questions به صفحه اضافه می‌شود. متخصصان معمولا این پرسش و پاسخ‌ها را با طرز کار توییتر مشابه می‌دانند و بخش مهمی از استرکچر دیتا را تشکیل می‌دهند.'
+    },
+    {
+        title:'چگونه سوالات متداول را بنویسیم',
+        description: 'کلید سوالات متداول معنادار در قالب سوالات آن دقیقاً همانطور که کاربران از آنها می پرسند نهفته است. بنابراین ، در اینجا 3 هک نوشتن سوال عملی برای جلوگیری از سرقت اثربخشی سوالات متداول در سوالات ضعیف آورده شده است.'
+    },
+    {
+        title:'سوالات متداول چیست؟',
+        description: 'پرتکرارترین سوالات مربوط به هر صفحه گلچین می‌شود و در قالب سوالات متداول یا همان frequently asked questions به صفحه اضافه می‌شود. متخصصان معمولا این پرسش و پاسخ‌ها را با طرز کار توییتر مشابه می‌دانند و بخش مهمی از استرکچر دیتا را تشکیل می‌دهند.'
+    },
+]
 
 const Product = () =>{
     const sectionRefs = useRef({
@@ -38,21 +55,27 @@ const Product = () =>{
         instructor: null,
         faq: null
     });
+    const [selectedTitle, setSelectedTitle] = useState(null);
+
+
 
     const scrollToSection = (section) => {
         const element = sectionRefs.current[section];
-    if (element) {
-        const headerOffset = 15 * window.innerHeight / 100; // Calculate 10vh in pixels
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        if (element) {
+            const headerOffset = 15 * window.innerHeight / 100; // Calculate 10vh in pixels
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    }
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
     };
-    
+    const toggleDescription = (index) => {
+        setSelectedTitle(selectedTitle === index ? null : index);
+      };
+
     return (
         <>
             <CContainer className='product-page border border-5 border-secondary rounded-3 mb-5'>
@@ -84,8 +107,8 @@ const Product = () =>{
                 </CRow>
             </CContainer>
             <CContainer className='mb-5'>
-                <CRow className='d-flex flex-column-reverse flex-lg-row'>
-                    <CCol md={9}>
+                <CRow className='d-flex flex-column-reverse flex-lg-row align-content-center'>
+                    <CCol md={9} className='mx-auto'>
                         <CContainer className='product-text border border-secondary border-5 rounded-3 bg-light pt-3 pb-3'>
                             <div className='mb-5'>
                                 <div className='header-with-line mb-3'>
@@ -136,10 +159,33 @@ const Product = () =>{
                                     </div>
                                 </div>
                             </div>
+                            <div className='mb-5'>
+                                <div className='header-with-line mb-3'>
+                                    <h3 ref={el => sectionRefs.current.faq = el}><CIcon size='xl' className="me-2" icon={cisEducation}/> سوالات متداول  </h3>
+                                </div>
+                                <div>
+                                    {faq.map((item, index) => (
+                                        <div key={index} className='m-2'>
+                                        <li
+                                            onClick={() => toggleDescription(index)}
+                                            style={{ cursor: 'pointer'}}
+                                        >
+                                            {item.title}
+                                        </li>
+                                        <br/>
+                                        {selectedTitle === index && (
+                                            <p className='ps-5' style={{ paddingLeft: '20px', color: 'gray' }}>{item.description}</p>
+                                        )}
+
+                                        </div>
+
+                                    ))}
+                                </div>
+                            </div>
 
                         </CContainer>
                     </CCol>
-                    <CCol md={3}>
+                    <CCol  lg={3} className='mx-auto'>
                 <CContainer className='border border-secondary border-5 rounded-3 bg-light mb-5'>
                     <h3>دسترسی سریع</h3>
                     <CButton color='dark' className='w-100 text-start mb-4' onClick={() => scrollToSection('intro')}>
