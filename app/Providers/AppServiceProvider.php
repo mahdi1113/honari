@@ -11,12 +11,14 @@ use App\Repositories\CourseRepositoryInterface;
 use App\Repositories\Eloquent\BlogRepository;
 use App\Repositories\Eloquent\CourseRepository;
 use App\Repositories\Eloquent\FrequentlyQuestionsRepository;
+use App\Repositories\Eloquent\ItemRepository;
 use App\Repositories\Eloquent\PurchaseRespository;
 use App\Repositories\Eloquent\ResponseRepository;
 use App\Repositories\Eloquent\TeacherCourseRepository;
 use App\Repositories\Eloquent\TicketRepository;
 use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\FrequentlyQuestionsRepositoryInterface;
+use App\Repositories\ItemRepositoryInterface;
 use App\Repositories\PurchaseRespositoryInterface;
 use App\Repositories\ResponseRepositoryInterface;
 use App\Repositories\TeacherCourseRepositoryInterface;
@@ -72,6 +74,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             UserRepositoryInterface::class,
             UserRepository::class
+        );
+
+        $this->app->bind(
+            ItemRepositoryInterface::class,
+            ItemRepository::class
         );
 
         Route::macro('handler', function ($prefix) {

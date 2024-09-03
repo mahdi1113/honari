@@ -77,4 +77,10 @@ class User extends Authenticatable implements HasMedia
         $this->addMediaCollection('files')->singleFile();
     }
 
+
+    public function purchasesCourse()
+    {
+        return $this->belongsToMany(Course::class, 'purchases')->withTimestamps();
+    }
+
 }

@@ -12,7 +12,7 @@ class Course extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
-    protected $fillable = ['title', 'description', 'price', 'duration_course', 'method_holding'];
+    protected $fillable = ['title', 'description', 'price', 'duration_course', 'method_holding', 'num_student'];
 
     public function comments()
     {
@@ -47,5 +47,15 @@ class Course extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('files')->singleFile();
+    }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+
+    public function buyers()
+    {
+        return $this->belongsToMany(User::class, 'purchases')->withTimestamps();
     }
 }

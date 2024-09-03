@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class UserService
 {
+    use AuthorizesRequests;
     public function __construct(
         readonly UserRepositoryInterface $userRepositoryInterface,
         readonly Request $request
@@ -42,6 +43,9 @@ class UserService
 
     public function updateUserOnline( int $id )
     {
+        $user = $this->getUser( $id );
+        $this->authorize('update', $user);
+
         return $this->userRepositoryInterface->updateOnline( $this->data(), $id );
     }
 

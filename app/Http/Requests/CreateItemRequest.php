@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Course;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCourseRequest extends FormRequest
+class CreateItemRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,13 @@ class CreateCourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'duration_course' => 'required',
-            'method_holding' => 'required',
-            'course_teacher_id' => 'required|array|min:1',
-            'course_teacher_id.*' => 'integer|exists:teacher_courses,id',
-            'num_student' => 'required',
+            'topic' => 'required|string',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'duration' => 'required',
+            'status' => ['required', 'in:private,public'],
+            'course_id' => 'required|exists:courses,id',
+            'video_batch_id' => 'required',
         ];
     }
 }

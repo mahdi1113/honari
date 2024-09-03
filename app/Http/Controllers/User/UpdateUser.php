@@ -26,7 +26,7 @@ class UpdateUser extends Controller
     public function updateOnline( User $user , updateUserRequest $updateUserRequest ): UserResource
     {
         return UserResource::make(
-            $this->userService->updateUser( $user->id )
+            $this->userService->updateUserOnline( $user->id )
         );
     }
 }
