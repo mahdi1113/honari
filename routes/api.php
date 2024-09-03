@@ -85,12 +85,21 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
         Route::handler('frequentlyQuestions');
     });
 
-    Route::namespace('Media')->group(function () {
-        Route::post('store_media', 'StoreMedia');
+    Route::namespace('Item')->group(function () {
+        Route::handler('items');
     });
 
     Route::namespace('User')->group(function () {
         Route::handler('users');
     });
+
+    Route::namespace('Media')->group(function () {
+        Route::post('store_media', 'StoreMedia');
+    });
+
+    Route::namespace('Video')->group(function () {
+        Route::post('store_Video', 'StoreVideo');
+    });
+
 
 });

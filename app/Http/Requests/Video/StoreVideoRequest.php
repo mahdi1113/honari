@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Course;
+namespace App\Http\Requests\Video;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateCourseRequest extends FormRequest
+class StoreVideoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,14 +22,7 @@ class CreateCourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
-            'price' => 'required',
-            'duration_course' => 'required',
-            'method_holding' => 'required',
-            'course_teacher_id' => 'required|array|min:1',
-            'course_teacher_id.*' => 'integer|exists:teacher_courses,id',
-            'num_student' => 'required',
+            'video' => ['required', 'file', 'mimes:mp4,avi', 'max:20480'], // حداکثر 20MB
         ];
     }
 }

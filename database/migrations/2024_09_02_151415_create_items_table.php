@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('requests', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('topic');
             $table->string('title');
             $table->text('description');
-            $table->unsignedInteger('ticket_id');
-            $table->softDeletes();
+            $table->string('duration');
+            $table->enum('status', ['public', 'private'])->default('public');
+            $table->unsignedInteger('course_id');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('requests');
+        Schema::dropIfExists('items');
     }
 };

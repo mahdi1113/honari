@@ -16,7 +16,7 @@ class ShowCourse extends Controller
     {
         $this->courseService = $courseService;
     }
-    public function __invoke( Course $course ): CourseResource
+    public function __invoke( Course $course )
     {
         return CourseResource::make(
             $this->courseService->getCourse($course->id)

@@ -31,14 +31,14 @@ class CourseRepository implements CourseRepositoryInterface
     public function show( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "teachers" , "teachers.user", "purchases", "purchases.user", "frequentlyQuestions" );
+        $course->load( "teachers" , "teachers.user", "purchases", "purchases.user", "frequentlyQuestions", "items" );
         return $course;
     }
 
     public function showOnline( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "teachers", "frequentlyQuestions" );
+        $course->load( "teachers", "frequentlyQuestions", "items" );
         return $course;
     }
 
