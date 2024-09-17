@@ -29,6 +29,17 @@ class ItemService
         return $this->itemRepositoryInterface->store( $this->data() );
     }
 
+    public function updateItem(int $id)
+    {
+
+        return $this->itemRepositoryInterface->update( $id, $this->data() );
+    }
+
+    public function destroyItem( int $id )
+    {
+        return $this->itemRepositoryInterface->destroy($id);
+    }
+
 
     public function data()
     {

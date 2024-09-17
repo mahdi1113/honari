@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('duration');
             $table->enum('status', ['public', 'private'])->default('public');
             $table->unsignedInteger('course_id');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -34,5 +34,22 @@ class ItemRepository implements ItemRepositoryInterface
         return $item;
     }
 
+    public function update( $itemId, $data )
+    {
+        $item = Item::findOrFail( $itemId );
+        $item->update( $data );
+
+        MediaHelper::moveVideoTo( $item );
+
+//        $item->load( "creator" );
+        return $item;
+    }
+
+    public function destroy( int $itemId )
+    {
+        $item = Item::findOrFail( $itemId );
+        return $item->delete();
+    }
+
 
 }
