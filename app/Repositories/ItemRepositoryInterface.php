@@ -9,4 +9,8 @@ interface ItemRepositoryInterface
     public function show( int $itemId );
 
     public function showOnline( int $itemId );
+
+    public function update( int $itemId, $data );
+
+    public function destroy( int $itemId );
 }

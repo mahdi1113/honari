@@ -103,3 +103,26 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
 
 
 });
+
+
+
+Route::POST('test',function (){
+    $apikey='231c390fd6843dc7101370396e839a9bd1a7d7d475ca34695f83d2476d29285ecuQvF6Zz8de68Jhe';
+          $ghasedaksms = new \Ghasedak\GhasedaksmsApi($apikey);
+
+    $sendDate = new DateTimeImmutable('now');
+    $lineNumber = '30005088';
+    $receptor = '09330166530';
+    $message = 'test123pp';
+    try {
+        $response = $ghasedaksms->sendSingle(new \Ghasedak\DataTransferObjects\Request\SingleMessageDTO(
+            sendDate: $sendDate,
+            lineNumber: $lineNumber,
+            receptor: $receptor,
+            message: $message
+        ));
+        var_dump($response);
+    } catch (Exceptions\GhasedakSMSException $e) {
+        var_dump($e->getMessage());
+    }
+});
