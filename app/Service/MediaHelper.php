@@ -23,7 +23,7 @@ class MediaHelper
     public static function moveVideoTo( $model )
     {
         request()->validate( [
-            'file_batch_id' => 'nullable|string' ,
+            'video_batch_id' => 'nullable|string' ,
         ] );
 
         if ( $fakeModel = FakeModel::where( 'batch_id' , request( 'video_batch_id' ) )->first() ) {
