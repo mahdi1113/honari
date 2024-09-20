@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class LoginRequest extends FormRequest
 {
@@ -22,7 +23,13 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_name' => 'required',
+            'cell_number' => [
+                'required',
+                'regex:/^09[0-9]{9}$/',
+                Rule::exists('users', 'phone')
+                    ->where('verified', 1)
+                    ->whereNull('deleted_at')
+            ],
             'password' => 'required|min:4'
         ];
     }
