@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
-    Route::group(['middleware' => ['guest', 'throttle:20,1']], function () {
+    Route::group(['middleware' => ['throttle:20,1']], function () {
         Route::post('register', 'RegisterController');
         Route::post('login', 'LoginController');
         Route::post( 'verify-register' , 'VerifyRegister' );
@@ -13,6 +13,10 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     Route::group(['middleware' => ['auth:sanctum', 'throttle:20,1']], function () {
         Route::post('logout', 'LogoutController');
     });
+});
+
+Route::namespace('password')->group(function (){
+    Route::post('change-password', 'changePassword')->middleware('auth:sanctum');
 });
 
 Route::namespace('Blog')->group(function () {
