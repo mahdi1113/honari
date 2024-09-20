@@ -6,6 +6,9 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     Route::group(['middleware' => ['guest', 'throttle:20,1']], function () {
         Route::post('register', 'RegisterController');
         Route::post('login', 'LoginController');
+        Route::post( 'verify-register' , 'VerifyRegister' );
+        Route::post('forget-password', 'ForgetPassword');
+        Route::post('verify-forget-password','ForgetPassword@verifyForgetPasswordCode');
     });
     Route::group(['middleware' => ['auth:sanctum', 'throttle:20,1']], function () {
         Route::post('logout', 'LogoutController');
@@ -122,7 +125,7 @@ Route::POST('test',function (){
             message: $message
         ));
         var_dump($response);
-    } catch (Exceptions\GhasedakSMSException $e) {
+    } catch (\Ghasedak\Exceptions\GhasedakSMSException $e) {
         var_dump($e->getMessage());
     }
 });
