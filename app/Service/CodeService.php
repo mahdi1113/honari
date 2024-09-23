@@ -1,20 +1,22 @@
 <?php
 
 namespace App\Service;
+use App\Jobs\SendSmsNotificationJob;
 use App\Models\User;
 use App\Notifications\SmsNotification;
-use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class CodeService
 {
     public function sendCode( $user, $purpose )
     {
-        $code = rand( 100000 , 999999 );
-        $cacheKey = 'otp_' . $purpose . '_' . $user->phone;
-        Cache::put($cacheKey, $code, 120);
-        $user = User::where( 'id' , $user->id )->first();
-        $user->notify(new SmsNotification($code));
+        DB::table('job_sms_status')->updateOrInsert(
+            ['user_id' => $user->id],  // شرط اینکه برای این کاربر رکوردی موجود است یا خیر
+            ['status' => 'pending', 'created_at' => now(), 'updated_at' => now()] // اگر موجود نیست، رکورد جدید ایجاد می‌شود
+        );
+        return SendSmsNotificationJob::dispatch($user, $purpose);
     }
 
     public static function verifyUser( $code, $cell_number, $purpose )
