@@ -19,7 +19,7 @@ class SmsChannel
                     "clientReferenceId" => "123456"
                 )
             ),
-            "templateName" => "Ghasedak",
+            "templateName" => "Ghaseda",
             "inputs" => array(
                 array(
                     "param" => "code",
@@ -48,6 +48,10 @@ class SmsChannel
 
         $response = curl_exec($curl);
         curl_close($curl);
-        return $response;
+        $responseData = json_decode($response);
+//        var_dump($responseData) ; // اینجا خروجی را برمی‌گردانید
+        return $responseData;
+
+
     }
 }
