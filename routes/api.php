@@ -15,6 +15,10 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function () {
     });
 });
 
+Route::group(['namespace' => 'CheckjobSms'], function () {
+    Route::post('check-job-sms-status/{user}', 'CheckJobSmsStatus');
+});
+
 Route::namespace('password')->group(function (){
     Route::post('change-password', 'changePassword')->middleware('auth:sanctum');
 });
