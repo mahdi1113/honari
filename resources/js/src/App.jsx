@@ -13,7 +13,7 @@ const Login = React.lazy(() => import('./views/pages/login/Login'));
 const Register = React.lazy(() => import('./views/pages/register/Register'));
 const Page404 = React.lazy(() => import('./views/pages/page404/Page404'));
 const Page500 = React.lazy(() => import('./views/pages/page500/Page500'));
-// const AdminDefaultLayout = React.lazy(() => import('./Admin/layout/DefaultLayout'));
+const AdminDefaultLayout = React.lazy(() => import('./Admin/layout/DefaultLayout'));
 const UserDefaultLayout = React.lazy(() => import('./User/layout/DefaultLayout'));
 const SiteDefaultLayout = React.lazy(() => import('./Site/layout/DefaultLayout'));
 const UserLogin = React.lazy(() => import('./User/Pages/Login/Login'))
@@ -46,11 +46,13 @@ const MainApp = () => {
         <Route exact path="/register" name="Register Page" element={<Register />} />
         <Route exact path="/404" name="Page 404" element={<Page404 />} />
         <Route exact path="/500" name="Page 500" element={<Page500 />} />
-        <Route path="/*" name="Home" element={<SiteDefaultLayout />} />
-        {/* <Route path="/admin/*" name="admin" element={<AdminDefaultLayout />} /> */}
+        <Route path="/admin/*" name="admin" element={<AdminDefaultLayout />} />
         <Route path="/userlogin" name="UserLogin" element={<UserLogin />} />
         <Route path="/userregister" name="UserRegister" element={<UserRegister />} />
+        {/* <Route path="/adminlogin" name="AdminLogin" element={<AdminLogin />} />
+        <Route path="/adminregister" name="AdminRegister" element={<AdminRegister />} /> */}
         <Route path="/user/*" name="user" element={<UserDefaultLayout />} />
+        <Route path="/*" name="Home" element={<SiteDefaultLayout />} />
       </Routes>
     </Suspense>
   );

@@ -21,12 +21,13 @@ const AppHeaderDropdown = () => {
     let navigate = useNavigate()
 
     const logoutUser = function(e){
+        console.log(1)
         e.preventDefault();
-        axiosClient.get('auth/admin/logout').then(res => {
+        axiosClient.post('auth/logout').then(res => {
+            console.log(2);
             localStorage.removeItem('token');
             // remove User Type
-            localStorage.removeItem('UT');
-            return navigate('/admin/login')
+            return navigate('#')
         })
         .catch(error => {
             console.log(error.response);
@@ -39,7 +40,7 @@ const AppHeaderDropdown = () => {
         <CAvatar src={avatar8} size="md" />
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
-        <CDropdownHeader className="bg-light fw-semibold py-2">Account</CDropdownHeader>
+        <CDropdownHeader className="bg-light fw-semibold py-2">حساب کاربری</CDropdownHeader>
         <CDropdownItem style={{cursor:'pointer'}} className="pe-auto" onClick={(e) => logoutUser(e)}>
           <CIcon icon={cilAccountLogout} className="me-2" />
           خروج

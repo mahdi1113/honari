@@ -75,7 +75,7 @@ const Home = () => {
             <div className="w-50">
                 <h1>آکادمی خطاطی</h1>
                 <h1>علی رحیمی</h1>
-                <div className="big-dash-divider"></div>
+                <div className="big-dash-divider text-nowrap"></div>
                 <CNavLink href="#/products">
                     <CButton className="mt-lg-5 p-3" color="primary" shape="rounded-pill">
                         <CIcon className="me-2" icon={cisEducation}/>
@@ -162,7 +162,7 @@ const Home = () => {
                 </div>
                 </div>
                 <div>
-                    <img src={react} height={'300rem'}/>
+                    <img src={react} height={'300rem'} className="img-fluid"/>
                 </div>
             </div>
         </div>

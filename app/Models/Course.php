@@ -21,7 +21,7 @@ class Course extends Model implements HasMedia
 
     public function frequentlyQuestions()
     {
-        return $this->hasOne(FrequentlyQuestions::class);
+        return $this->hasMany(FrequentlyQuestions::class);
     }
 
 //    public function users()

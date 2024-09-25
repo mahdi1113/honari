@@ -6,7 +6,10 @@ import openbook from'../../assets/images/openbook.jpg';
 import { CButton, CCol, CContainer, CRow } from '@coreui/react-pro';
 import { cisEducation } from '@coreui/icons-pro';
 import CIcon from '@coreui/icons-react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { CForm } from '@coreui/react';
+import axiosClient from '../../../../axios';
+import useAPI from '../../../Tools/API/useAPI';
 const ProductData=
     {
         title: 'دوره خطاطی',
@@ -47,6 +50,25 @@ const faq = [
     },
 ]
 
+const comments = [
+    {
+        title: '',
+        description: 'دوره‌ی مدیریت پروژه‌ای که اخیراً گذراندم، بسیار مفید و کاربردی بود. محتوای دوره به‌خوبی ساختاربندی شده و شامل مباحث اساسی و پیشرفته مدیریت پروژه است. همچنین، تدریس استاد با تجربه و ارائه مثال‌های واقعی از پروژه‌های موفق، باعث شد که به‌راحتی مفاهیم را درک کنم و توانایی‌های مدیریتی‌ام را تقویت کنم.',
+        user_name: 'علی رضایی'
+    },
+    {
+        title: '',
+        description: 'دوره‌ی برنامه‌نویسی وب به‌طور کلی تجربه‌ای بسیار آموزنده بود. در این دوره، با تکنولوژی‌های روز دنیا آشنا شدم و توانستم پروژه‌های عملی زیادی انجام دهم. استاد دوره با ارائه تمرینات عملی و حل مشکلات واقعی، یادگیری را جذاب و کاربردی کرده بود. همچنین، محیط آموزشی بسیار دوستانه و حمایتی بود.',
+        user_name: 'رضا رفیعی'
+    },
+    {
+        title: '',
+        description: 'دوره‌ی تحلیل داده‌ها که اخیراً به پایان رساندم، به‌طور جامع به تحلیل داده‌های پیچیده پرداخت و ابزارهای مختلفی را برای تجزیه و تحلیل داده‌ها معرفی کرد. مطالب آموزشی به‌خوبی سازمان‌دهی شده بود و تدریس با استفاده از داده‌های واقعی و کاربردی، باعث شد که بتوانم مهارت‌های تحلیلی‌ام را به‌طور قابل توجهی افزایش دهم.',
+        user_name: 'آرش میری'
+    },
+]
+
+
 const Product = () =>{
     const sectionRefs = useRef({
         intro: null,
@@ -55,9 +77,20 @@ const Product = () =>{
         instructor: null,
         faq: null
     });
+    const [newComment, setNewComment] = useState('');
     const [selectedTitle, setSelectedTitle] = useState(null);
+    const [token, setToken] = useState(null);
+    const { create } = useAPI();
 
-
+    useEffect(()=>{
+        const temp_token = localStorage.getItem("token");
+        if(temp_token){
+            setToken(temp_token)
+        }
+    },[])
+    // useEffect(()=>{
+    //     console.log('newComment :: ',newComment);
+    // },[newComment])
 
     const scrollToSection = (section) => {
         const element = sectionRefs.current[section];
@@ -76,6 +109,10 @@ const Product = () =>{
         setSelectedTitle(selectedTitle === index ? null : index);
       };
 
+    const saveComment = () =>{
+        if (newComment && newComment!='')
+            create('comments', newComment);
+    }
     return (
         <>
             <CContainer className='product-page border border-5 border-secondary rounded-3 mb-5'>
@@ -121,7 +158,7 @@ const Product = () =>{
                                     <h3 ref={el => sectionRefs.current.syllabus = el}><CIcon size='xl' className="me-2" icon={cisEducation}/> سرفصل های پکیج</h3>
                                 </div>
                                 {ProductData.headlines.map((headline,index)=>(
-                                    <li>{headline}</li>
+                                    <li key={index}>{headline}</li>
                                 ))}
 
                             </div>
@@ -205,6 +242,35 @@ const Product = () =>{
                     </CButton>
                 </CContainer>
             </CCol>
+                </CRow>
+            </CContainer>
+            <CContainer className='mb-5 '>
+                <CRow className='d-flex flex-column-reverse flex-lg-row align-content-center ps-5'>
+                    <CCol md={8}>
+                        {comments.map((comment, index)=>(
+                            <div key={index} className='mx-auto mb-3'>
+                            <CRow className='border border-secondary border-1 rounded-3 p-2'>
+                                <h3 key={index}>{comment.user_name} :</h3>
+                                <CCol md={12}>
+                                <p key={index}>{comment.description}</p>
+                                </CCol>
+                            </CRow>
+                            </div>
+                        ))}
+                    </CCol>
+                    {token ? (
+                        <CCol className='border border-secondary border-1 rounded-3 p-2' md={8}>
+                                <textarea value={newComment} className='form-control mb-3' onChange={(e) => setNewComment(e.target.value)}/>
+                                <div className='d-flex flex-column flex-lg-row justify-content-center gap-5'>
+                                    <CButton className='w-25' color='success' shape='rounded-pill' onClick={saveComment}>ثبت</CButton>
+                                    <CButton className='w-25' color='danger' shape='rounded-pill'>انصراف</CButton>
+                                </div>
+                        </CCol>
+                    ):(
+                        <CCol className='border border-secondary border-1 rounded-3 p-2' md={8}>
+                            <h5 className='text-center'>برای ثبت نظر ابتدا وارد شوید</h5>
+                        </CCol>
+                    )}
                 </CRow>
             </CContainer>
         </>

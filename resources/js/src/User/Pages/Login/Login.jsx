@@ -50,7 +50,7 @@ const Register = () => {
         // console.log(password)
         axiosClientForLogin
             .post("auth/login", {
-                user_name: username,
+                cell_number: username,
                 password: password,
             })
             .then((res) => {

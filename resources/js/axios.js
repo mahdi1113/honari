@@ -29,7 +29,6 @@ axiosClient.interceptors.response.use(response => {
         localStorage.removeItem('token');
         localStorage.removeItem('UT');
         window.location.href = 'http://localhost:8000/';
-        // window.location.href = 'https://darolhoda.ir/';
     }
     throw error;
 })
