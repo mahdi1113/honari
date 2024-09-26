@@ -99,6 +99,8 @@ return [
      */
     'moves_media_on_update' => false,
 
+    'path_generator' => App\Service\PathGenerator::class,
+
     /*
      * Whether to activate versioning when urls to files get generated.
      * When activated, this attaches a ?v=xx query string to the URL.
