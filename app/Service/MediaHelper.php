@@ -14,7 +14,7 @@ class MediaHelper
 
         if ( $fakeModel = FakeModel::where( 'batch_id' , request( 'file_batch_id' ) )->first() ) {
             foreach ( $fakeModel->getMedia( 'temp_medias' ) as $media ) {
-                $media->move( $model , 'files' );
+                $media->move( $model, 'files', 'arvan-s3' );
             }
             $fakeModel->delete();
         }
