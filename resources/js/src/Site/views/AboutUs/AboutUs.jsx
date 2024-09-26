@@ -4,7 +4,7 @@ const AboutUs = () =>{
     return (
         <>
             <div className="d-flex flex-column justify-content-around flex-md-row">
-                <div>
+                <div className='col-md-6'>
                     <h3>درباره استاد</h3>
                     <div className="ms-3">
                         <li>فارغ التحصیل انجمن خوشنویسان ایران</li>
@@ -15,8 +15,8 @@ const AboutUs = () =>{
                         <li>تدریس در دانشگاه</li>
                     </div>
                 </div>
-                <div>
-                    <img src={pic} height={'300rem'}/>
+                <div className='col-md-6'>
+                    <img src={pic} height={'200rem'} className="img-fluid"/>
                 </div>
 
             </div>

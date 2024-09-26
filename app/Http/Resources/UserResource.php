@@ -17,7 +17,7 @@ class UserResource extends JsonResource
         return [
             'id' => $this->id ,
             'user_name' => $this->user_name ,
-            'cell_number' => $this->cell_number ,
+            'phone' => $this->phone ,
             'role' => $this->role ,
             'created_at' => $this->created_at ,
             'files' => $this->getFirstMediaUrl('files'),

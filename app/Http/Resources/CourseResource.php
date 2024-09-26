@@ -25,7 +25,7 @@ class CourseResource extends JsonResource
             'items' => ItemResource::collection($this->whenLoaded('items')),
             'teachers' => TeacherCourseResource::collection($this->whenLoaded('teachers')),
             'purchases' => PurchaseResource::collection($this->whenLoaded('purchases')),
-            'frequentlyQuestions' => FrequentlyQuestionsResource::make($this->whenLoaded('frequentlyQuestions')),
+            'frequentlyQuestions' => FrequentlyQuestionsResource::collection($this->whenLoaded('frequentlyQuestions')),
         ];
     }
 }

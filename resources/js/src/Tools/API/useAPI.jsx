@@ -19,11 +19,10 @@ const useAPI = () => {
     const fetch =  (url, setFormData,  params={}, id=0, search) => {
         setLoading(true);
         const URL = id==0 ? url : `${url}/${id}`;
-        // console.log('api', URL);
-
+        console.log('api', URL);
         axiosClient.get(URL, {params})
             .then((response) => {
-                // console.log('api', URL, response.data);
+                console.log('api', URL, response.data);
                 if(response.data.data)
                     setFormData(response.data.data);
                 else
@@ -37,22 +36,16 @@ const useAPI = () => {
             });
     };
 
-    const fetchPaginate =  (url, setFormData, setTotalPages,  params={}, struct=null) => {
+    const fetchPaginate =  (url, setFormData, params={}, struct=null) => {
         setLoading(true);
         axiosClient.get(`${url}`, {params})
             .then((response) => {
-                // console.log('fetchPaginate :: ',url,response.data);
+                console.log('fetchPaginate :: ',url,response);
                 if(struct){
-                    if(response.data.data)
-                        setFormData(response.data.data.map(struct));
-                    else
-                        setFormData(response.data.map(struct));
+                    setFormData(response.data.data.map(struct));
                 }
                 else{
-                    if(response.data.data)
-                        setFormData(response.data.data);
-                    else
-                        setFormData(response.data);
+                    setFormData(response.data);
                 }
                 setTotalPages(response.data.meta.last_page);
 

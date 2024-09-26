@@ -17,7 +17,7 @@ class RegisterController extends Controller
     {
         $this->codeService = $codeService;
     }
-    public function __invoke(RegisterRequest $request)
+    public function __invoke(RegisterRequest $request): array
     {
         $this->deleteUnverifiedUserByPhone($request->cell_number);
 
@@ -27,7 +27,7 @@ class RegisterController extends Controller
         $data[ 'phone' ] = $request->cell_number;
         $user = User::query()->create( $data );
 
-         $this->codeService->sendCode($user, 'registerForHonariMME');
+        // $this->codeService->sendCode($user, 'registerForHonariMME');
 
         return Responser::success('', '', $user);
     }

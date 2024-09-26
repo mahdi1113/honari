@@ -54,7 +54,7 @@ td, th
 
 
 .table-responsive {
-    max-height: 400px; /* Set your desired max height */
+    height: 70vh; /* Set your desired max height */
     overflow-y: auto;  /* Enable vertical scrolling */
     position: relative; /* Ensure positioning context for sticky headers */
   }
@@ -277,4 +277,12 @@ border-bottom: 4px solid #555; /* Line style */
     top: 15vh; /* Adjust this value as needed */
     /* Optionally add z-index if you want to ensure it's above other content */
     z-index: 10;
+}
+
+.product-text p, li {
+    padding: 0 !important;
+}
+
+a:hover {
+    cursor: pointer;
 }

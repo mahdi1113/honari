@@ -16,10 +16,12 @@ class ShowCourse extends Controller
     {
         $this->courseService = $courseService;
     }
-    public function __invoke( Course $course )
+    public function __invoke(  $id )
     {
+        // $course = Course::find(1);
+        // return response()->json($id);
         return CourseResource::make(
-            $this->courseService->getCourse($course->id)
+            $this->courseService->getCourse($id)
         );
     }
 

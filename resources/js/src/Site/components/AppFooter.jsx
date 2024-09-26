@@ -34,7 +34,7 @@ const AppFooter = () => {
                 </h5>
             </div>
             <div className='d-flex flex-column'>
-                <p>ما را دنبال کن</p>
+                <p>ما را دنبال کنید</p>
                 <CIcon icon={cibInstagram} size="xl"/>
             </div>
       </div>
