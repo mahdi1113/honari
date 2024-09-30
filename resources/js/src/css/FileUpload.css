@@ -1,0 +1,36 @@
+/* FileUpload.css */
+
+.dropzone {
+    border: 2px dashed #007bff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .dropzone p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #007bff;
+  }
+
+  .dropzone.active {
+    background-color: #e9f7ff;
+    border-color: #0056b3;
+  }
+
+
+  /* FileUpload.css */
+
+.custom-progress {
+    height: 30px; /* ارتفاع نوار پیشرفت را بیشتر کنید */
+    font-size: 1.2rem; /* اندازه فونت برای نمایش درصد */
+    display: flex;
+    align-items: center; /* برای تراز کردن درصد در وسط نوار */
+    justify-content: center; /* قرار دادن درصد در وسط */
+  }
+
+  .custom-progress-bar {
+    border-radius: 5px; /* گوشه‌های گردتر برای نوار پیشرفت */
+  }

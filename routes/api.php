@@ -108,9 +108,9 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
     //     Route::post('store_media', 'StoreMedia');
     // });
 
-    Route::namespace('Video')->group(function () {
-        Route::post('store_Video', 'StoreVideo');
-    });
+    // Route::namespace('Video')->group(function () {
+    //     Route::post('store_Video', 'StoreVideo');
+    // });
 
 
 });
@@ -118,3 +118,11 @@ Route::middleware(['auth:sanctum','admin'])->group(function () {
 Route::namespace('Media')->group(function () {
     Route::post('store_media', 'StoreMedia');
 });
+
+
+Route::namespace('Video')->group(function () {
+    Route::post('store_Video', 'StoreVideo');
+});
+
+
+Route::post('stream/video', 'Video\StreamVideoController@stream');

@@ -22,7 +22,7 @@ class StoreVideoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'video' => ['required', 'file', 'mimes:mp4,avi', 'max:20480'], // حداکثر 20MB
+            'video' => ['required', 'file', 'mimes:mp4', 'max:256000'], // حداکثر 20MB
         ];
     }
 }

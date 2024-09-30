@@ -9,8 +9,6 @@ const routes = [
   { path: '/User/Dashboard', name: 'Dashboard', element: Dashboard },
   { path: '/User/Login', name: 'Login', element: Login },
   { path: '/User/Register', name: 'Register', element: Register },
-
-
 ]
 
 export default routes
