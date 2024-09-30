@@ -21,6 +21,7 @@ class MediaHelper
     private static function moveMediaWithBatchId($model, $batchIdKey, $mediaCollection, $destinationCollection)
     {
 
+
         $rules = [
             $batchIdKey => ($batchIdKey === 'file_batch_id' || 'video_batch_id') ? 'nullable' : 'nullable|array',
         ];

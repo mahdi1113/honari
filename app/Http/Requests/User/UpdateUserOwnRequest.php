@@ -5,7 +5,7 @@ namespace App\Http\Requests\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class updateUserRequest extends FormRequest
+class UpdateUserOwnRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class updateUserRequest extends FormRequest
 
         return [
             'user_name' => 'required|string|min:3|max:30',
-            'verified' => 'required',
+            'verified' => 'prohibited',
             'email' => [
                 'nullable',
                 'email',

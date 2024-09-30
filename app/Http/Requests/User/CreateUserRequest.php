@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\User;
+namespace App\Http\Requests\user;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class updateUserRequest extends FormRequest
+class CreateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,21 +22,20 @@ class updateUserRequest extends FormRequest
      */
     public function rules(): array
     {
-        $userId = $this->route('user'); // فرض بر این است که ID کاربر در پارامترهای مسیر قرار دارد
-
         return [
             'user_name' => 'required|string|min:3|max:30',
+            'password' => 'required|min:4',
             'verified' => 'required',
             'email' => [
                 'nullable',
                 'email',
-                Rule::unique('users')->ignore($userId),
+                Rule::unique('users'),
             ],
             'cell_number' => [
                 'required' ,
                 'string' ,
                 'regex:/^09[0-9]{9}$/' ,
-                Rule::unique( 'users' , 'phone' )->ignore($userId)
+                Rule::unique( 'users' , 'phone' )
             ] ,
         ];
     }

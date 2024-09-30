@@ -21,9 +21,9 @@ class CourseResource extends JsonResource
             'price' => $this->price,
             'duration_course' => $this->duration_course,
             'method_holding' => $this->method_holding,
+            'teacher_name' => $this->teacher_name,
             'files' => $this->getFirstMediaUrl('files'),
             'items' => ItemResource::collection($this->whenLoaded('items')),
-            'teachers' => TeacherCourseResource::collection($this->whenLoaded('teachers')),
             'purchases' => PurchaseResource::collection($this->whenLoaded('purchases')),
             'frequentlyQuestions' => FrequentlyQuestionsResource::collection($this->whenLoaded('frequentlyQuestions')),
         ];

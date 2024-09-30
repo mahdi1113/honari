@@ -61,6 +61,8 @@ class UserService
             'user_name' => $this->request->get('user_name'),
             'password' => $this->request->get('password'),
             'email' => $this->request->get('email'),
+            'phone' => $this->request->get('cell_number'),
+            'verified' => $this->request->get('verified'),
         ];
 
         return $data;
