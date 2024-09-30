@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Purchase extends Model
 {
-    protected $fillable = [ 'course_id', 'user_id', 'ticket_count' ];
+    protected $fillable = [ 'course_id', 'user_id' ];
 
     use HasFactory, SoftDeletes;
 

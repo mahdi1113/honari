@@ -28,7 +28,6 @@ class UserRepository implements UserRepositoryInterface
     public function store( $data )
     {
         $user = User::query()->create( $data );
-
         MediaHelper::moveMediaTo( $user );
 
         return $user;
@@ -38,7 +37,6 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::findOrFail( $userId );
         $user->update( $data );
-
         MediaHelper::moveMediaTo( $user );
 
         return $user;
@@ -46,6 +44,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function updateOnline( $data , $userId )
     {
+        $data['verified'] = true;
         $user = User::findOrFail( $userId );
         $user->update( $data );
 

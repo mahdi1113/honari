@@ -27,9 +27,8 @@ class CreateCourseRequest extends FormRequest
             'price' => 'required',
             'duration_course' => 'required',
             'method_holding' => 'required',
-            'course_teacher_id' => 'required|array|min:1',
-            'course_teacher_id.*' => 'integer|exists:teacher_courses,id',
             'num_student' => 'required',
+            'teacher_name' => 'required'
         ];
     }
 }
