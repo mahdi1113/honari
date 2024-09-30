@@ -22,19 +22,10 @@ class FrequentlyQuestionsRepository implements FrequentlyQuestionsRepositoryInte
 
     public function store($data)
     {
-        $course = Course::findOrFail($data['course_id']);
-        $hasCourse = $course->frequentlyQuestions()->exists();
+        $frequentlyQuestions = FrequentlyQuestions::query()->create($data);
 
-        if ($hasCourse) {
-            return [
-                'message' => 'برای این دوره قبلا سوالات متداول ثبت شده است، فقط می توانید سوالات متداول این دوره را آپدیت کنید.'
-            ];
-        } else {
-            $frequentlyQuestions = FrequentlyQuestions::query()->create($data);
-
-            $frequentlyQuestions->load("course");
-            return $frequentlyQuestions;
-        }
+        $frequentlyQuestions->load("course");
+        return $frequentlyQuestions;
     }
 
     public function destroy($frequentlyQuestionsId)
