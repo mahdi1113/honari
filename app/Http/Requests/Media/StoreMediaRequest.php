@@ -23,7 +23,7 @@ class StoreMediaRequest extends FormRequest
     {
         return [
             'batch_id' => 'required|max:40',
-            'file' => 'required|mimes:jpeg,jpg,bmp,png,pdf'
+            'file' => 'required|mimes:jpeg,jpg,png'
         ];
     }
 }

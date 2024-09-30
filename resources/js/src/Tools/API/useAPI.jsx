@@ -61,7 +61,7 @@ const useAPI = () => {
         // console.log('api', url, formData);
         axiosClient.post(url, formData)
             .then((response) => {
-                // console.log('api', url,response);
+                console.log('api', url,response);
                 Swal.fire({
                     icon: 'success',
                     title: 'عملیات موفق',

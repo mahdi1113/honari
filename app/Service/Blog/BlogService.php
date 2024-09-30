@@ -51,6 +51,7 @@ class BlogService
         $data = [
             'title' => $this->request->get('title'),
             'description' => $this->request->get('description'),
+            'status' => $this->request->get('status')
         ];
 
         return $data;

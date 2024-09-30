@@ -14,16 +14,19 @@ class Blog extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
-    protected $fillable = ['title', 'description', 'user_id'];
+    protected $fillable = ['title', 'description', 'user_id', 'status'];
 
     public function creator()
     {
         return $this->belongsTo(User::class,'user_id');
     }
 
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('files')->singleFile();
+
+        $this->addMediaCollection('tinymce_images');
     }
 
     public function registerMediaConversions(\Spatie\MediaLibrary\MediaCollections\Models\Media $media = null): void
@@ -40,5 +43,12 @@ class Blog extends Model implements HasMedia
             ->height(300)
             ->nonQueued()
             ->performOnCollections('files');
+
+            $this->addMediaConversion('article-image-tinymce')
+            ->width(800)
+            ->height(600)
+            ->nonQueued()
+            ->performOnCollections('tinymce_images');
+
     }
 }

@@ -38,6 +38,7 @@ class BlogRepository implements BlogRepositoryInterface
         $blog = Blog::query()->create( $data );
 
         MediaHelper::moveMediaTo( $blog );
+        MediaHelper::moveTinyMCEMediaTo( $blog );
 
         $blog->load("creator");
         return $blog;

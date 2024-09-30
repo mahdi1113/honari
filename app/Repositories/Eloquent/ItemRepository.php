@@ -30,7 +30,6 @@ class ItemRepository implements ItemRepositoryInterface
 
         MediaHelper::moveVideoTo( $item );
 
-//        $blog->load("creator");
         return $item;
     }
 

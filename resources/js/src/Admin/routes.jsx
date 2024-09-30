@@ -20,6 +20,10 @@ const FQEdit = React.lazy(() => import('./views/FrequentlyQuestions/Edit'))
 const FQCreate = React.lazy(() => import('./views/FrequentlyQuestions/Create'))
 const TicketsIndex = React.lazy(() => import('./views/Tickets/Index'))
 const TicketsEdit = React.lazy(() => import('./views/Tickets/Edit'))
+const BlogIndex = React.lazy(() => import('./views/Blogs/index'))
+const BlogCreate = React.lazy(() => import('./views/Blogs/Create'))
+const BlogShow = React.lazy(() => import('./views/Blogs/Show'))
+const BlogUpdate = React.lazy(() => import('./views/Blogs/Update'))
 
 const routes = [
   { path: 'Dashboard', name: 'Dashboard', element: Dashboard },
@@ -41,6 +45,11 @@ const routes = [
   { path: 'Courses/:id/FQ/Create', name: 'FQCreate', element: FQCreate },
   { path: 'Tickets', name: 'TicketsIndex', element: TicketsIndex },
   { path: 'Tickets/:id/Edit', name: 'TicketsEdit', element: TicketsEdit },
+  { path: 'Blogs', name: 'BlogIndex', element: BlogIndex },
+  { path: 'Blogs/create', name: 'BlogCreate', element: BlogCreate },
+  { path: 'Blogs/show/:id', name: 'BlogShow', element: BlogShow },
+  { path: 'Blogs/Update', name: 'BlogUpdate', element: BlogUpdate },
+
 ]
 
 export default routes
