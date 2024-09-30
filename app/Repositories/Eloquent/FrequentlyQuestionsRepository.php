@@ -36,21 +36,10 @@ class FrequentlyQuestionsRepository implements FrequentlyQuestionsRepositoryInte
 
     public function update($data, $frequentlyQuestionsId)
     {
-
-        $course = Course::findOrFail($data['course_id']);
         $frequentlyQuestions = FrequentlyQuestions::findOrFail($frequentlyQuestionsId);
-        $hasCourse = $course->frequentlyQuestions()->exists();
+        $frequentlyQuestions->update($data);
+        $frequentlyQuestions->load("course");
 
-        if ( $data['course_id'] != $frequentlyQuestions->course_id && $hasCourse ) {
-            return [
-                'message' => 'برای این دوره قبلا سوالات متداول ثبت شده است'
-            ];
-        } else {
-            $frequentlyQuestions->update($data);
-
-            $frequentlyQuestions->load("course");
-            return $frequentlyQuestions;
-        }
-
+        return $frequentlyQuestions;
     }
 }
