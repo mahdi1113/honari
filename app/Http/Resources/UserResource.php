@@ -19,6 +19,7 @@ class UserResource extends JsonResource
             'user_name' => $this->user_name ,
             'phone' => $this->phone ,
             'role' => $this->role ,
+            'cell_number' => $this->phone,
             'created_at' => $this->created_at ,
             'files' => $this->getFirstMediaUrl('files'),
         ];

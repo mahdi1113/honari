@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('password');
             $table->string('image_profile')->nullable();
             $table->enum( 'role' , [ "admin" , "user" ] )->default("user");
-            $table->string('cell_number', 20)->unique()->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

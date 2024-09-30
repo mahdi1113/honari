@@ -12,7 +12,7 @@ class Course extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
-    protected $fillable = ['title', 'description', 'price', 'duration_course', 'method_holding', 'num_student'];
+    protected $fillable = ['title', 'description', 'price', 'duration_course', 'method_holding', 'num_student', 'teacher_name'];
 
     public function comments()
     {
@@ -34,10 +34,10 @@ class Course extends Model implements HasMedia
         return $this->hasMany(Ticket::class);
     }
 
-    public function teachers()
-    {
-        return $this->belongsToMany(TeacherCourse::class, 'course_teachers','course_id','teacher_id');
-    }
+//    public function teachers()
+//    {
+//        return $this->belongsToMany(TeacherCourse::class, 'course_teachers','course_id','teacher_id');
+//    }
 
     public function purchases()
     {

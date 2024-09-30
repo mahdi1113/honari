@@ -12,18 +12,18 @@ class CourseRepository implements CourseRepositoryInterface
 {
     public function index()
     {
-        return Course::with( "teachers" , "teachers.user", "frequentlyQuestions" )->paginate();
+        return Course::with("frequentlyQuestions" )->paginate();
     }
 
     public function indexOnline()
     {
-        return Course::with('teachers')->paginate();
+        return Course::paginate();
     }
 
     public function indexCourseUser()
     {
         $courseIds = Purchase::where('user_id', Auth::id())->pluck('course_id');
-        $courses = Course::whereIn('id', $courseIds)->with('teachers', "frequentlyQuestions" )->paginate();
+        $courses = Course::whereIn('id', $courseIds)->with("frequentlyQuestions" )->paginate();
 
         return $courses;
     }
@@ -31,31 +31,28 @@ class CourseRepository implements CourseRepositoryInterface
     public function show( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "teachers" , "teachers.user", "purchases", "purchases.user", "frequentlyQuestions", "items" );
+        $course->load( "purchases", "purchases.user", "frequentlyQuestions", "items" );
         return $course;
     }
 
     public function showOnline( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "teachers", "frequentlyQuestions", "items" );
+        $course->load( "frequentlyQuestions", "items" );
         return $course;
     }
 
     public function showCourseUser( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "teachers", "frequentlyQuestions" );
+        $course->load( "frequentlyQuestions" );
         return $course;
     }
     public function store(array $data)
     {
         $course = Course::query()->create( $data );
-        $course->teachers()->attach($data['course_teacher_id']);
-
         MediaHelper::moveMediaTo( $course );
 
-        $course->load('teachers','teachers.user');
         return $course;
     }
 
@@ -63,11 +60,8 @@ class CourseRepository implements CourseRepositoryInterface
     {
         $course = Course::findOrFail( $courseId );
         $course->update( $data );
-        $course->teachers()->sync($data['course_teacher_id']);
-
         MediaHelper::moveMediaTo( $course );
 
-        $course->load( "teachers", "teachers.user" );
         return $course;
     }
 

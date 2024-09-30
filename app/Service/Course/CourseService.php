@@ -66,6 +66,7 @@ class CourseService
             'method_holding' => $this->request->get('method_holding'),
             'course_teacher_id' => $this->request->get('course_teacher_id'),
             'num_student' => $this->request->get('num_student'),
+            'teacher_name' => $this->request->get('teacher_name'),
         ];
 
         return $data;

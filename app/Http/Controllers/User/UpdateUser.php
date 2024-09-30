@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UpdateUserOwnRequest;
 use App\Http\Requests\User\updateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -23,7 +24,7 @@ class UpdateUser extends Controller
         );
     }
 
-    public function updateOnline( User $user , updateUserRequest $updateUserRequest ): UserResource
+    public function updateOnline( User $user , UpdateUserOwnRequest $UpdateUserOwnRequest ): UserResource
     {
         return UserResource::make(
             $this->userService->updateUserOnline( $user->id )
