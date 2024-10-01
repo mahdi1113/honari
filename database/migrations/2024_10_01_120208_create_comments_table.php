@@ -17,7 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedBigInteger('course_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->unsignedBigInteger('parent_id')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

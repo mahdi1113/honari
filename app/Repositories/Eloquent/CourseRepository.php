@@ -31,21 +31,21 @@ class CourseRepository implements CourseRepositoryInterface
     public function show( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "purchases", "purchases.user", "frequentlyQuestions", "items" );
+        $course->load( "purchases", "purchases.user", "frequentlyQuestions", "items", "comments", "comments.replies" );
         return $course;
     }
 
     public function showOnline( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "frequentlyQuestions", "items" );
+        $course->load( "frequentlyQuestions", "items", "comments", "comments.replies" , 'comments.user');
         return $course;
     }
 
     public function showCourseUser( $courseId )
     {
         $course = Course::findOrFail( $courseId );
-        $course->load( "frequentlyQuestions" );
+        $course->load( "frequentlyQuestions", "comments", "comments.replies" );
         return $course;
     }
     public function store(array $data)
