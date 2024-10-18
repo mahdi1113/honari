@@ -7,8 +7,10 @@ use App\Models\TeacherCourse;
 use App\Observers\Course\CourseObserver;
 use App\Observers\TeacherCourse\TeacherCourseObserver;
 use App\Repositories\BlogRepositoryInterface;
+use App\Repositories\CommentRepositoryInterface;
 use App\Repositories\CourseRepositoryInterface;
 use App\Repositories\Eloquent\BlogRepository;
+use App\Repositories\Eloquent\CommentRepository;
 use App\Repositories\Eloquent\CourseRepository;
 use App\Repositories\Eloquent\FrequentlyQuestionsRepository;
 use App\Repositories\Eloquent\ItemRepository;
@@ -80,6 +82,11 @@ class AppServiceProvider extends ServiceProvider
             ItemRepositoryInterface::class,
             ItemRepository::class
         );
+        $this->app->bind(
+            CommentRepositoryInterface::class,
+            CommentRepository::class
+        );
+
 
         Route::macro('handler', function ($prefix) {
             $singular = Str::singular($prefix);

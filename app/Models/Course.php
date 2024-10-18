@@ -16,18 +16,15 @@ class Course extends Model implements HasMedia
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class)
+            ->where('parent_id', 0)
+            ->where('status', 1);
     }
 
     public function frequentlyQuestions()
     {
         return $this->hasMany(FrequentlyQuestions::class);
     }
-
-//    public function users()
-//    {
-//        return $this->belongsToMany(User::class)->withTimestamps();
-//    }
 
     public function tickets()
     {
