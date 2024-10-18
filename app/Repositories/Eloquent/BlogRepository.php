@@ -16,7 +16,7 @@ class BlogRepository implements BlogRepositoryInterface
 
     public function indexOnline()
     {
-        return Blog::with( "creator" )->paginate();
+        return Blog::with( "creator" )->paginate(8);
     }
 
     public function show($blogId)
@@ -48,6 +48,10 @@ class BlogRepository implements BlogRepositoryInterface
     {
         $blog = Blog::findOrFail( $blogId );
         $blog->update( $data );
+
+        if (isset($data['file_batch_id'])) {
+            MediaHelper::moveMediaTo( $blog );
+        }
 
         $blog->load( "creator" );
         return $blog;

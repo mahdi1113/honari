@@ -1,0 +1,82 @@
+.dark-mode {
+    background-color: #1e1e2f; /* پس‌زمینه تیره‌تر با ته‌رنگ آبی یا بنفش */
+    color: #e0e0e0;           /* رنگ متن خاکستری روشن */
+  }
+
+  .dark-mode a{
+    color: #e0e0e0 !important;
+  }
+
+  .dark-mode .wrapper {
+    background-color: #1e1e2f;
+  }
+
+  .dark-mode .btn {
+    background-color: #3a3f58; /* رنگ دکمه تیره‌تر */
+    color: #e0e0e0;
+  }
+
+  .header-dark-mode {
+    background-color: #2a2d3e; /* پس‌زمینه خاکستری تیره */
+    color: #f0f0f0;            /* رنگ متن سفید مایل به خاکستری روشن */
+    border-bottom: 2px solid #ffcc80; /* خط نارنجی ملایم زیر هدر */
+}
+
+.header-dark-mode a {
+    color: #ffcc80 !important; /* لینک‌ها به رنگ نارنجی ملایم */
+}
+
+.header-dark-mode .btn {
+    background-color: #f76c6c; /* دکمه‌های قرمز مایل به صورتی */
+    color: #ffffff;            /* متن داخل دکمه سفید خالص */
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.header-dark-mode .btn:hover {
+    background-color: #ff5e78; /* رنگ دکمه در حالت hover */
+}
+
+.header-dark-mode p, .header-dark-mode h1, .header-dark-mode h2, .header-dark-mode h3 {
+    color: #f0f0f0; /* تمام متن‌ها با رنگ سفید مایل به خاکستری روشن */
+}
+
+
+  .toggle-button {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button .sun, .toggle-button .moon {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ffdd57; /* زرد خورشید */
+    box-shadow: 0 0 10px rgba(255, 221, 87, 0.6);
+    transition: all 0.3s ease;
+}
+
+.toggle-button .moon {
+    background-color: #4c4c4c; /* خاکستری برای ماه */
+    box-shadow: 0 0 10px rgba(76, 76, 76, 0.6);
+    transform: translateX(30px);
+}
+
+.toggle-button:focus {
+    outline: none;
+}
+
+.toggle-button:hover {
+    background-color: #ccc;
+}

@@ -98,6 +98,8 @@ const Form = ({ formData, handleFromChange, onSubmit }) => {
     useEffect(() => {
     }, [formData]);
 
+    console.log("FormData ::", formData)
+
     return (
         <CForm>
             <div className="d-flex flex-column">
@@ -130,6 +132,7 @@ const Form = ({ formData, handleFromChange, onSubmit }) => {
                             images_reuse_filename: true,
                             images_upload_handler: handleImageUpload,
                         }}
+                        value={formData?.description}
                     />
 
                     <CInputGroup className="mb-3 mt-3">
@@ -165,14 +168,15 @@ const Form = ({ formData, handleFromChange, onSubmit }) => {
                         ) : null}
                     </div>
 
-                    {image && (
-                        <img
-                            style={{ width: "100px" }}
-                            className="imageUpload"
-                            src={image}
-                            alt="آپلود شده"
-                        />
-                    )}
+                    {(formData?.thumbnail || image) && (
+    <img
+        style={{ width: "100px" }}
+        className="imageUpload"
+        src={image || formData?.thumbnail}
+        alt="آپلود شده"
+    />
+)}
+
                 </div>
                 <div className="d-flex flex-column-reverse gap-5 flex-lg-row justify-content-center align-items-stretch mb-4">
                     <div className="col-lg-2">

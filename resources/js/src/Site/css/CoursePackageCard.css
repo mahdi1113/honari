@@ -1,0 +1,37 @@
+/* RTL برای چینش از راست به چپ */
+.rtl {
+    direction: rtl;
+}
+
+/* استایل کارت برای انیمیشن هاور */
+.card-hover {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px); /* انیمیشن شناور */
+}
+
+/* استایل تصویر کارت با افکت زوم هنگام هاور */
+.image-container {
+    overflow: hidden;
+}
+
+.card-img-top-hover {
+    transition: transform 0.4s ease;
+}
+
+.card-img-top-hover:hover {
+    transform: scale(1.1); /* زوم هنگام هاور */
+}
+
+/* استایل دکمه با افکت هاور */
+.btn-hover {
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 50px;
+}
+
+.btn-hover:hover {
+    background-color: #ff7043; /* رنگ نارنجی هنگام هاور */
+    color: #fff;
+}

@@ -14,7 +14,7 @@ class BlogResource extends JsonResource
             'title' => $this->title,
             'description' => $this->description,
             'creator_id' => $this->user_id,
-            'status' => $this->status === 'active' ? 'فعال' : 'غیر فعال',
+            'status' => $this->status,
             'creator' => UserResource::make($this->whenLoaded('creator')),
             'thumbnail' => $this->getFirstMediaUrl('files', 'thumbnail'),
             'article_image' => $this->getFirstMediaUrl('files', 'article-image'),
