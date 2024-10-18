@@ -1,30 +1,40 @@
-import React, { useState } from 'react';
-import ChunkUpload from '../../components/ChunkUpload'; // مطمئن شوید مسیر درست است
+import React, { useEffect, useState } from 'react'
+import useAPI from '../../../Tools/API/useAPI';
+import Pagination from '../../../Tools/Pagination/Pagination';
+import { CNavItem, CPagination, CPaginationItem, CTable, CTableBody, CTableDataCell, CTableHead, CTableHeaderCell, CTableRow } from '@coreui/react';
+import { CButton } from '@coreui/react-pro';
+import { useParams } from 'react-router-dom';
+import Form from './Form';
+import useForm from '../../../Tools/useForm/useForm';
+import useField from './Fields';
+const update = () => {
+    const { fetch, update } = useAPI();
+    const [ formData, setFormData, handleFromChange ] = useForm(useField);
+    const { id } = useParams();
+    useEffect(() => {
+        fetchData();
+    }, []);
+    useEffect(() => {
+        // console.log(formData);
+    }, [formData]);
 
-const Update = () => {
-  // تعریف ParentComponent
-  const ParentComponent = () => {
-    const [batchId, setBatchId] = useState(null); // استفاده از useState برای مدیریت batchId
 
-    // تابعی که بعد از اتمام آپلود فراخوانی می‌شود
-    const handleUploadComplete = (newBatchId) => {
-      setBatchId(newBatchId); // مقدار batchId را در state قرار می‌دهیم
-      console.log("Batch ID received from ChunkUpload:", newBatchId);
+    const fetchData =  () => {
+        fetch('blogs' , setFormData, {}, id);
     };
-
-    return (
-      <div>
-        <h1>Video Upload</h1>
-        {/* ChunkUpload و ارسال callback */}
-        <ChunkUpload onUploadComplete={handleUploadComplete} />
-        {/* نمایش Batch ID اگر موجود باشد */}
-
-      </div>
+    const updateData =  () => {
+        update(`blogs`, id, formData, '/admin/Blogs');
+    };
+    return(
+        <>
+            <Form
+                formData={formData}
+                handleFromChange={handleFromChange}
+                onSubmit={updateData}
+            />
+        </>
     );
-  };
+}
 
-  // در اینجا ParentComponent را رندر می‌کنیم
-  return <ParentComponent />;
-};
 
-export default Update;
+export default update

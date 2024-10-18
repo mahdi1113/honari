@@ -33,7 +33,6 @@ const Index = () => {
                 <CTableHead>
                     <CTableRow>
                     <CTableHeaderCell scope="col">عنوان</CTableHeaderCell>
-                    <CTableHeaderCell scope="col">توضیحات</CTableHeaderCell>
                     <CTableHeaderCell scope="col">وضعیت</CTableHeaderCell>
                     <CTableHeaderCell scope="col">سازنده</CTableHeaderCell>
                     <CTableHeaderCell scope="col"> </CTableHeaderCell>
@@ -43,12 +42,14 @@ const Index = () => {
                     {data?.data?.map((blog) => (
                         <CTableRow key={blog.id}>
                             <CTableHeaderCell scope="row">{blog.title}</CTableHeaderCell>
-                            <CTableDataCell>{blog.description?.split(' ').slice(0, 4).join(' ') + '...'}</CTableDataCell>
                             <CTableDataCell>{blog.status}</CTableDataCell>
                             <CTableDataCell>{blog.creator?.user_name}</CTableDataCell>
                             <CTableDataCell>
                                 <CButton href={'#/admin/blogs/show/'+blog.id} color='primary'>
                                     نمایش
+                                </CButton>
+                                <CButton style={{ color: 'white' }} href={'#/admin/blogs/update/'+blog.id} color='info' className='ms-3'>
+                                    آپدیت
                                 </CButton>
                             </CTableDataCell>
                         </CTableRow>

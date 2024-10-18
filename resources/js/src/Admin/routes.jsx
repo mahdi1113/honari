@@ -48,7 +48,7 @@ const routes = [
   { path: 'Blogs', name: 'BlogIndex', element: BlogIndex },
   { path: 'Blogs/create', name: 'BlogCreate', element: BlogCreate },
   { path: 'Blogs/show/:id', name: 'BlogShow', element: BlogShow },
-  { path: 'Blogs/Update', name: 'BlogUpdate', element: BlogUpdate },
+  { path: 'Blogs/update/:id', name: 'BlogUpdate', element: BlogUpdate },
 
 ]
 

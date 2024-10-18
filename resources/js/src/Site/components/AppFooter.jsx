@@ -4,9 +4,11 @@ import { CNavItem, CNavLink } from '@coreui/react-pro'
 import CIcon from '@coreui/icons-react'
 import { cibInstagram } from '@coreui/icons-pro'
 import pic from'../assets/images/logo1.jpg';
-const AppFooter = () => {
+const AppFooter = ({isDarkMode}) => {
   return (
-    <CFooter>
+    <CFooter className={`${
+        isDarkMode ? "dark-mode" : ""
+    }`}>
       <div className='d-flex justify-content-around me-auto flex-grow-1'>
 
             <div>

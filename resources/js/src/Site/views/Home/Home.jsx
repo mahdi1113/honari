@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import TopPic from'../../assets/images/react1.jpg';
+import TopPic from'../../assets/images/main-Picture.jpg';
 import BookPic from'../../assets/images/Book.jpg';
 import openbook from'../../assets/images/openbook.jpg';
 import redbook from'../../assets/images/redbook.jpg';
@@ -11,6 +11,7 @@ import angular from'../../assets/images/angular.jpg';
 import react from'../../assets/images/react.jpg';
 import vue from'../../assets/images/vue.jpg';
 import axiosClient from "../../../../axios";
+import CoursePackageCard from "../../components/CoursePackageCard";
 
 const works =[angular, react, vue, angular, react, vue,]
 
@@ -90,15 +91,13 @@ const Home = () => {
 
         <div className="mb-5">
             <h1 className="text-center mb-5">دوره های آموزشی</h1>
-            <div className="d-flex flex-column flex-wrap flex-lg-row justify-content-lg-between align-items-center">
+            <div className="d-flex flex-column flex-wrap flex-lg-row justify-content-lg-evenly align-items-center">
                 {packages.map((coursePackage ,index)=>(
-                    <div className="mt-4">
-                        <PackageImage
-                        ImgSrc={coursePackage.image}
-                        Title={coursePackage.title}
-                        link={coursePackage.link}
-                        />
-                    </div>
+                    <CoursePackageCard
+                    ImgSrc={coursePackage.image}
+                    Title={coursePackage.title}
+                    link={coursePackage.link}
+                />
                 ))}
             </div>
         </div>
