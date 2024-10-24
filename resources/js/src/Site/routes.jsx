@@ -13,8 +13,8 @@ const routes = [
     {path: "/Product/:id" , name: "Product" , element: Product},
     {path: "/AboutUs" , name: "AboutUs" , element: AboutUs},
     {path: "/AboutUs" , name: "AboutUs" , element: AboutUs},
-    { path: '/Blogs', name: 'BlogIndex', element: BlogIndex },
-    { path: '/Blogs/show/:id', name: 'BlogShow', element: BlogShow },
+    {path: '/Blogs', name: 'BlogIndex', element: BlogIndex },
+    {path: '/Blogs/show/:id', name: 'BlogShow', element: BlogShow },
 
 ]
 

@@ -22,7 +22,7 @@ const Show = () => {
     return(
         <>
             <div className='d-flex justify-content-around col-md-5 mb-5 text-nowrap'>
-                <CButton href={'#/admin/users/'+data?.id+'/edit'} color='warning'>
+                <CButton shape="rounded-pill" href={'#/admin/users/'+data?.id+'/edit'} color='warning'>
                     ویرایش
                 </CButton>
             </div>

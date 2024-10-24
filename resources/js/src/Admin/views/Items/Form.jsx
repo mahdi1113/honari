@@ -2,6 +2,7 @@ import { CFormSelect, CFormTextarea, CInputGroup, CInputGroupText } from "@coreu
 import { CButton, CDatePicker, CForm, CFormFloating, CFormInput, CFormLabel } from "@coreui/react-pro";
 import React, { useEffect, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import ChunkUpload from "../../components/ChunkUpload";
 const Form = ({formData, handleFromChange, onSubmit}) =>{
     const navigate = useNavigate();
     useEffect(() => {
@@ -11,13 +12,14 @@ const Form = ({formData, handleFromChange, onSubmit}) =>{
         <CForm>
         <div className="d-flex flex-column">
             <div className="d-flex flex-column justify-content-around mb-lg-3">
-                <CInputGroup className="mb-3">
-                    <video className="mb-3" controls width="100%">
+                {/* <CInputGroup className="mb-3"> */}
+                    {/* <video className="mb-3" controls width="100%">
                         <source src={formData?.video_url} type="video/mp4" />
                         Your browser does not support the video tag.
                     </video>
-                    <CFormInput type="file" name="video_url" value={formData?.video_url} onChange={handleFromChange}/>
-                </CInputGroup>
+                    <CFormInput type="file" name="video_url" value={formData?.video_url} onChange={handleFromChange}/> */}
+                    <ChunkUpload/>
+                {/* </CInputGroup> */}
 
                 <CInputGroup className="mb-3">
                     <CInputGroupText className="col-lg-1 text-wrap" id="basic-addon1">سرفصل</CInputGroupText>

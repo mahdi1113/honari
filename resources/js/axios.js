@@ -17,6 +17,7 @@ axiosClient.interceptors.request.use((config) => {
 axiosClient.interceptors.response.use(response => {
     return response
 }, error => {
+    console.log(error.response);
     if(error.response && error.response.status === 401){
         // Swal.fire({
         //     icon: 'error',
@@ -25,7 +26,6 @@ axiosClient.interceptors.response.use(response => {
         // });
         // router.navigate('/login');
         // return error
-        // console.log('errror');
         localStorage.removeItem('token');
         localStorage.removeItem('UT');
         window.location.href = 'http://localhost:8000/';

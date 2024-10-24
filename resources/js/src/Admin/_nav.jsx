@@ -47,7 +47,7 @@ const _nav = [
     component: CNavItem,
     name: 'دوره ها',
     to: '/admin/Courses',
-    icon: <CIcon icon={cilScreenDesktop} customClassName="nav-icon text-danger" />,
+    icon: <CIcon icon={cilScreenDesktop} customClassName="nav-icon" style={{color:'purple'}} />,
   },
   {
     component: CNavItem,
@@ -58,14 +58,14 @@ const _nav = [
   {
     component: CNavItem,
     name: "کامنت ها",
-    to: "#",
-    icon: <CIcon icon={cilPeople} customClassName="nav-icon text-info" />,
+    to: "/admin/Comments",
+    icon: <CIcon icon={cilPeople} customClassName="nav-icon text-primary" />,
   },
   {
     component: CNavItem,
     name: "مقاله ها",
     to: "/admin/Blogs",
-    icon: <CIcon icon={cilPeople} customClassName="nav-icon text-info" />,
+    icon: <CIcon icon={cilPeople} customClassName="nav-icon" style={{color:'orange'}} />,
   },
 
 ]

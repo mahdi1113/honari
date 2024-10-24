@@ -24,6 +24,10 @@ const BlogIndex = React.lazy(() => import('./views/Blogs/index'))
 const BlogCreate = React.lazy(() => import('./views/Blogs/Create'))
 const BlogShow = React.lazy(() => import('./views/Blogs/Show'))
 const BlogUpdate = React.lazy(() => import('./views/Blogs/Update'))
+const CommentsIndex = React.lazy(() => import('./views/Comments/index'))
+// const CommentsCreate = React.lazy(() => import('./views/Comments/Create'))
+// const CommentsShow = React.lazy(() => import('./views/Comments/Show'))
+// const CommentsUpdate = React.lazy(() => import('./views/Comments/Update'))
 
 const routes = [
   { path: 'Dashboard', name: 'Dashboard', element: Dashboard },
@@ -49,6 +53,10 @@ const routes = [
   { path: 'Blogs/create', name: 'BlogCreate', element: BlogCreate },
   { path: 'Blogs/show/:id', name: 'BlogShow', element: BlogShow },
   { path: 'Blogs/update/:id', name: 'BlogUpdate', element: BlogUpdate },
+  { path: 'Comments', name: 'CommentsIndex', element: CommentsIndex },
+//   { path: 'Comments/create', name: 'CommentsCreate', element: CommentsCreate },
+//   { path: 'Comments/show/:id', name: 'CommentsShow', element: CommentsShow },
+//   { path: 'Comments/update/:id', name: 'CommentsUpdate', element: CommentsUpdate },
 
 ]
 

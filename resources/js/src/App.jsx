@@ -23,25 +23,25 @@ const UserRegister = React.lazy(() => import('./User/Pages/Register/Register'))
 const MainApp = () => {
   const loading = useSelector((state) => state.loading);
 
-  useEffect(() => {
-    if (loading) {
-      Swal.fire({
-        title: 'درحال پردازش ...',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showConfirmButton: false,
-        didOpen: () => {
-          Swal.showLoading();
-        },
-      });
-    } else {
-      Swal.close();
-    }
-  }, [loading]);
+//   useEffect(() => {
+//     if (loading) {
+//       Swal.fire({
+//         title: 'درحال پردازش ...',
+//         allowOutsideClick: false,
+//         allowEscapeKey: false,
+//         showConfirmButton: false,
+//         didOpen: () => {
+//           Swal.showLoading();
+//         },
+//       });
+//     } else {
+//       Swal.close();
+//     }
+//   }, [loading]);
 
 
   return (
-    <Suspense fallback={loading}>
+    <Suspense>
       <Routes>
         <Route exact path="/register" name="Register Page" element={<Register />} />
         <Route exact path="/404" name="Page 404" element={<Page404 />} />

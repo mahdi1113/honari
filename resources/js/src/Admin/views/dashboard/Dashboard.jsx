@@ -10,6 +10,7 @@ const Dashboard = () => {
 
     const renderNavItem = (item) => (
       <CButton
+        shape="rounded-pill"
         key={item.name}
         color="dark"
         className="m-3 p-4 d-flex flex-column align-items-center "

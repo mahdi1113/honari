@@ -46,7 +46,7 @@ const Index = () => {
                             <CTableDataCell>{course.email}</CTableDataCell>
                             <CTableDataCell>{course.role === 'admin' ? 'ادمین' : 'کاربر'}</CTableDataCell>
                             <CTableDataCell>
-                                <CButton href={'#/admin/users/'+course.id} color='primary'>
+                                <CButton shape="rounded-pill" href={'#/admin/users/'+course.id} color='primary'>
                                     نمایش
                                 </CButton>
                             </CTableDataCell>

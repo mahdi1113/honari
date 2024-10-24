@@ -46,7 +46,7 @@ const Index = () => {
                             <CTableDataCell>{course.method_holding}</CTableDataCell>
                             <CTableDataCell>{course.duration_course}</CTableDataCell>
                             <CTableDataCell>
-                                <CButton href={'#/admin/courses/'+course.id} color='primary'>
+                                <CButton shape="rounded-pill" href={'#/admin/courses/'+course.id} color='primary'>
                                     نمایش
                                 </CButton>
                             </CTableDataCell>

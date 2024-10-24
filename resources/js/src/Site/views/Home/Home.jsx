@@ -8,13 +8,23 @@ import CIcon from "@coreui/icons-react";
 import { cisEducation } from "@coreui/icons-pro";
 import PackageImage from "../../components/PackageImage";
 import angular from'../../assets/images/angular.jpg';
+import newImage from'../../assets/images/img/img (1).jpeg';
 import react from'../../assets/images/react.jpg';
 import vue from'../../assets/images/vue.jpg';
 import axiosClient from "../../../../axios";
 import CoursePackageCard from "../../components/CoursePackageCard";
 
-const works =[angular, react, vue, angular, react, vue,]
+const images = [];
 
+const loadImages = async () => {
+    const promises = [];
+    for (let i = 1; i <= 12; i++) {
+      promises.push(import(`../../assets/images/img/img (${i}).jpeg`));
+    }
+    const images = await Promise.all(promises);
+    return images.map((image) => image.default);
+  };
+console.log(images);
 const packages=[
     {
         title: 'دوره خطاطی',
@@ -50,6 +60,11 @@ const packages=[
 
 
 const Home = () => {
+    const [images, setImages] = React.useState([]);
+
+    useEffect(() => {
+        loadImages().then(setImages);
+    }, []);
     // const [packages, setPackages] = useState([]);
 
     // useEffect(() => {
@@ -106,26 +121,26 @@ const Home = () => {
             <div className="d-flex justify-content-center overflow-hidden mb-3">
                 <div className="d-flex flex-nowrap home-logos">
                     <div className="home-logos-slide">
-                        {works.map((logo, index) => (
+                        {images.map((logo, index) => (
                             <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
                         ))}
                     </div>
                     <div className="home-logos-slide">
-                        {works.map((logo, index) => (
+                        {images.map((logo, index) => (
                             <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
                         ))}
                     </div>
                 </div>
             </div>
-            <div className="d-flex justify-content-center overflow-hidden mb-3">
+            {/* <div className="d-flex justify-content-center overflow-hidden mb-3">
                 <div className="d-flex flex-nowrap home-logos-reverse">
                     <div className="home-logos-slide-reverse">
-                        {works.map((logo, index) => (
+                        {images.map((logo, index) => (
                             <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
                         ))}
                     </div>
                     <div className="home-logos-slide-reverse">
-                        {works.map((logo, index) => (
+                        {images.map((logo, index) => (
                             <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
                         ))}
                     </div>
@@ -134,17 +149,17 @@ const Home = () => {
             <div className="d-flex justify-content-center overflow-hidden mb-3">
                 <div className="d-flex flex-nowrap home-logos">
                     <div className="home-logos-slide">
-                        {works.map((logo, index) => (
+                        {images.map((logo, index) => (
                             <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
                         ))}
                     </div>
                     <div className="home-logos-slide">
-                        {works.map((logo, index) => (
+                        {images.map((logo, index) => (
                             <img key={index} src={logo} alt={`Logo ${index}`} height={100} />
                         ))}
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
 
         <div className="mb-5">

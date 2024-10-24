@@ -54,14 +54,14 @@ td, th
 
 
 .table-responsive {
-    height: 70vh; /* Set your desired max height */
+    max-height: 70vh; /* Set your desired max height */
     overflow-y: auto;  /* Enable vertical scrolling */
     position: relative; /* Ensure positioning context for sticky headers */
   }
 
   .table-responsive table {
     width: 100%; /* Ensure the table takes the full width */
-    border-collapse: collapse; /* Optional: For a better look */
+    /* border-collapse: collapse; */
   }
 
   .table-responsive thead {
@@ -69,22 +69,25 @@ td, th
     top: -1px; /* Stick to the top */
     background-color: white; /* Ensure the header has a background */
     z-index: 1; /* Ensure the headers are above the table body */
-    border: 41px solid black;
+    /* border: 41px solid black; */
   }
   /* Optional: Add some styling to make the table look better */
   .table-responsive thead, .table-responsive td {
     padding: 8px; /* Adjust padding as needed */
-    border: 1px solid #ddd; /* Add a border */
+    /* border: 1px solid #ddd;  */
     text-align: center; /* Align text */
   }
-  /* li::marker {
-    content: none;
-    font-variant-numeric: normal;
-    text-transform: inherit;
-    text-indent: inherit;
-    text-align: inherit;
-    text-align-last: inherit;
-} */
+
+  .table-responsive thead tr th{
+    background-color: rgb(44, 41, 41) !important;
+    color: white !important;
+    text-align: center; /* Align text */
+
+  }
+  .table-responsive{
+    border: none ;
+    border-radius: 20px 25px 10px 10px;
+  }
 
 .big-dash-divider {
     width: 100%;           /* Full width of the container */
@@ -167,7 +170,7 @@ td, th
 
 .home-logos-slide {
     /* display: flex; */
-    animation: slide 5s linear infinite;
+    animation: slide 6s linear infinite;
 }
 
 @keyframes slide {
@@ -286,3 +289,5 @@ border-bottom: 4px solid #555; /* Line style */
 a:hover {
     cursor: pointer;
 }
+
+

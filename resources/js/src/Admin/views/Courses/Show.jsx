@@ -22,13 +22,13 @@ const Show = () => {
     return(
         <>
             <div className='d-flex justify-content-around col-md-5 mb-5 text-nowrap'>
-                <CButton href={'#/admin/courses/'+data?.id+'/edit'} color='warning'>
+                <CButton shape="rounded-pill" href={'#/admin/courses/'+data?.id+'/edit'} color='warning'>
                     ویرایش
                 </CButton>
-                <CButton href={'#/admin/courses/'+data?.id+'/items'} color='info'>
+                <CButton shape="rounded-pill" href={'#/admin/courses/'+data?.id+'/items'} color='info'>
                     آیتم های دوره
                 </CButton>
-                <CButton href={'#/admin/courses/'+data?.id+'/fq'} color='success'>
+                <CButton shape="rounded-pill" href={'#/admin/courses/'+data?.id+'/fq'} color='success'>
                      سوالات متداول دوره
                 </CButton>
             </div>

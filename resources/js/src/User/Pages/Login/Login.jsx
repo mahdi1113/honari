@@ -56,7 +56,7 @@ const Register = () => {
             .then((res) => {
                 console.log(res);
                 localStorage.setItem("token", res.data.data.token);
-                showAlert('با موفقیت وارد شدید', '#/user/', 'success');
+                showAlert('با موفقیت وارد شدید', `#/${res.data.data.user.role}/`, 'success');
                 // return navigate("#");
             })
             .catch((error) => {

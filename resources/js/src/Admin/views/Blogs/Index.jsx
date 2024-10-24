@@ -28,7 +28,7 @@ const Index = () => {
 
     return(
         <>
-            <CButton href={'#/admin/blogs/create'} className='mb-3' color="primary">ایجاد بلاگ</CButton>
+            <CButton href={'#/admin/blogs/create'} shape="rounded-pill" className='mb-3' color="primary">ایجاد بلاگ</CButton>
             <CTable border={2} responsive striped>
                 <CTableHead>
                     <CTableRow>
@@ -45,10 +45,10 @@ const Index = () => {
                             <CTableDataCell>{blog.status}</CTableDataCell>
                             <CTableDataCell>{blog.creator?.user_name}</CTableDataCell>
                             <CTableDataCell>
-                                <CButton href={'#/admin/blogs/show/'+blog.id} color='primary'>
+                                <CButton shape="rounded-pill" href={'#/admin/blogs/show/'+blog.id} color='primary'>
                                     نمایش
                                 </CButton>
-                                <CButton style={{ color: 'white' }} href={'#/admin/blogs/update/'+blog.id} color='info' className='ms-3'>
+                                <CButton shape="rounded-pill" style={{ color: 'white' }} href={'#/admin/blogs/update/'+blog.id} color='info' className='ms-3'>
                                     آپدیت
                                 </CButton>
                             </CTableDataCell>
