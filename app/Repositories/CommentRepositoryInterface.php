@@ -6,6 +6,8 @@ interface CommentRepositoryInterface
 {
     public function index();
 
+    public function indexOnline();
+
     public function show( int $commentId );
 
     public function storeOnline( array $data );
