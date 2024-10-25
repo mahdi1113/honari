@@ -13,6 +13,11 @@ class CommentRepository implements CommentRepositoryInterface
         return Comment::with( "user", "replies" )->paginate();
     }
 
+    public function indexOnline()
+    {
+        return Comment::with( "user", "replies" )->paginate();
+    }
+
     public function show( $commentId )
     {
         $comment = Comment::findOrFail( $commentId );

@@ -68,6 +68,7 @@ Route::namespace('User')->middleware('auth:sanctum')->group(function () {
 
 Route::namespace('Comment')->middleware('auth:sanctum')->group(function () {
 
+    Route::get('get-comments', 'IndexComment@indexOnline');
     Route::post('store-comment', 'StoreComment@StoreOnline');
 
 });

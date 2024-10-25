@@ -19,6 +19,11 @@ class CommentService
         return $this->commentRepositoryInterface->index();
     }
 
+    public function getCommentsOnline()
+    {
+        return $this->commentRepositoryInterface->indexOnline();
+    }
+
 
     public function getComment(int $id)
     {

@@ -21,4 +21,11 @@ class IndexComment extends Controller
             $this->commentService->getComments()
         );
     }
+
+    public function indexOnline()
+    {
+        return CommentResource::collection(
+            $this->commentService->getCommentsOnline()
+        );
+    }
 }

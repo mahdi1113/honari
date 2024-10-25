@@ -23,7 +23,7 @@ class LoginController extends Controller
                 $personalAccessToken->save();
                 return Responser::success('' , '', ['token' => $token->plainTextToken, 'user' => auth()->user()]);
         }
-        return response()->json( Responser::error( [ 'credentials' => trans( 'messages.credentials' ) ] ) , 422 );
+        return response()->json( ['msg' => 'رمز عبور یا شماره تلفن اشتبا است.'] , 403 );
     }
 
     private function findCredentials($request): array
